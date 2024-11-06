@@ -85,4 +85,12 @@ class controladorVistas extends Controller
     public function editarpoliticas(){
         return view('editarpoliticas');
     }
+
+    public function editarUsuarios(){
+        return view('editarUsuarios');
+    }
+
+    public function editarReservaH(){
+        return view('editarReservaH');
+    }
 }

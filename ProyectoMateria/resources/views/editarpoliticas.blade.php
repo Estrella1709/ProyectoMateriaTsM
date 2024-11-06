@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ asset('css/editarpoliticas.css') }}">
 <div class="info-card">
             <h3>Políticas de cancelación</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia fuga ad possimus alias praesentium assumenda sapiente quas maxime nam cum consequatur saepe blanditiis, eveniet non sunt nulla itaque nemo necessitatibus!</p>
+            <x-textarea placeholder="esto es una prueba me quiero matar x2 jajaja lololollo"/>
             <div class="buttons">
                 <button class="button edit-btn" onclick="window.location.href='{{ url('politicas') }}'">Confirmar Cambios</button>
             </div>

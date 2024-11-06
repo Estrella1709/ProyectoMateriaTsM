@@ -8,12 +8,12 @@
 
         <div class="info-card">
             <div>
-                <p>Cliente:</p>
-                <p>Aerolínea:</p>
-                <p>Destino:</p>
+                <p>Cliente: <x-input-text placeholder="Nombre cliente"/></p>
+                <p>Aerolínea: <x-input-text placeholder="Nombre aerolínea"/></p>
+                <p>Destino: <x-input-text placeholder="Destino"/></p>
             </div>
             <h3>Información Financiera</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem soluta fuga earum quaerat molestiae illum molestias expedita incidunt necessitatibus architecto, quasi nostrum dolor ea praesentium est iure porro nihil distinctio!</p>
+            <x-textarea placeholder="esto es una prueba me quiero matar jajaja X3 lololollo"/>
             <div class="buttons">
                 <button class="button edit-btn">Agregar</button>
             </div>
