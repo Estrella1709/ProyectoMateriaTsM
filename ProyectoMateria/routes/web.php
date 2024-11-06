@@ -23,3 +23,5 @@ Route::get('/notificaciones', [controladorVistas::class, 'notificaciones'])->nam
 Route::get('/editarnoti', [controladorVistas::class, 'editarnoti'])->name('rutaEditarNoti');
 Route::get('/politicas', [controladorVistas::class, 'politicas'])->name('rutaPoliticas');
 Route::get('/editarpoliticas', [controladorVistas::class, 'editarpoliticas'])->name('rutaEditarPoliticas');
+Route::get('/editarUsuarios', [controladorVistas::class, 'editarUsuarios'])->name('rutaEditarUsuarios');
+Route::get('/editarReservaH', [controladorVistas::class, 'editarReservaH'])->name('rutaEditarReservaH');
