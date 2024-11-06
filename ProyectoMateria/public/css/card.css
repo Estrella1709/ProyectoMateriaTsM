@@ -1,0 +1,115 @@
+
+/* Tarjeta del hotel */
+.hotel-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+}
+
+.vuelo-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Ancho de tarjetas */
+@media (max-width: 1200px) {
+    .hotel-card {
+        width: calc(33.33% - 20px); /* 3 tarjetas por fila */
+    }
+
+    .vuelo-card {
+        width: calc(33.33% - 20px); /* 3 tarjetas por fila */
+    }
+}
+
+@media (max-width: 768px) {
+    .hotel-card {
+        width: calc(45% - 20px); /* 2 tarjetas por fila */
+    }
+
+    .vuelo-card {
+        width: calc(45% - 20px); /* 2 tarjetas por fila */
+    }
+}
+
+@media (max-width: 480px) {
+    .hotel-card {
+        width: 100%; /* 1 tarjeta por fila */
+    }
+
+    .vuelo-card {
+        width: 100%; /* 1 tarjeta por fila */
+    }
+}
+
+/* Estilos adicionales para la tarjeta */
+.hotel-image img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.vuelo-image img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.hotel-info {
+    padding: 10px;
+}
+
+.vuelo-info {
+    padding: 10px;
+}
+
+.hotel-info h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.vuelo-info h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.hotel-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.vuelo-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.stars {
+    color: #FFD700;
+}
+
+.amenities {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.details-button {
+    background-color: #FFB74D;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.details-button:hover {
+    background-color: #FF9800;
+}

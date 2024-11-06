@@ -1,0 +1,27 @@
+.hotel-list {
+    display: flex;
+    flex-wrap: wrap; /* Asegúrate de que las tarjetas se envuelvan */
+    padding: 20px;
+    gap: 20px; /* Espaciado entre las tarjetas */
+    justify-content: flex-start; /* Alineación a la izquierda */
+    width: calc(100% - 250px); /* Ancho total menos el sidebar */
+}
+
+.container1 {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar de filtros */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ddd;
+}
+
+.clear {
+    color: #ff9800;
+    cursor: pointer;
+    font-size: 14px;
+}
