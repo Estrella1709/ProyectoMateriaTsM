@@ -30,13 +30,13 @@
         <h3>Inicio de Sesión</h3>   
         <x-input-text placeholder="Correo Electrónico"/>
         <x-input-text placeholder="Contraseña"/>
-        <a href="">¿Olvidaste tu contraseña?</a>
+        <a href="{{'recuperacionCuenta'}}">¿Olvidaste tu contraseña?</a>
         <br>
-        <a href="">Registrarse</a>
+        <a href="{{'registro'}}">Registrarse</a>
         <br>
         <br>
         <div class="btn-container">
-            <button type="button">Iniciar sesión</button>
+            <button type="button" onclick="location.href='{{ url('hoteles') }}'">Iniciar Sesión</button>
         </div>
     </div>
 </body>

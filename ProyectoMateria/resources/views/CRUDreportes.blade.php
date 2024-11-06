@@ -22,7 +22,7 @@
                 <tbody>
                     <tr>
                         <td>hoy</td>
-                        <td><button class="edit-btn">Detalles</button></td>
+                        <td><button class="edit-btn" onclick="window.location.href='{{url ('detallesreportes')}}'">Detalles</button></td>
                         <td>
                             <button class="edit-btn">Editar</button>
                             <button class="delete-btn">Cancelar</button>
@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <td>hoy</td>
-                        <td><button class="edit-btn">Detalles</button></td>
+                        <td><button class="edit-btn" onclick="window.location.href='{{url ('detallesreportes')}}'">Detalles</button></td>
                         <td>
                             <button class="edit-btn">Editar</button>
                             <button class="delete-btn">Cancelar</button>
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>hoy</td>
-                        <td><button class="edit-btn">Detalles</button></td>
+                        <td><button class="edit-btn" onclick="window.location.href='{{url ('detallesreportes')}}'">Detalles</button></td>
                         <td>
                             <button class="edit-btn">Editar</button>
                             <button class="delete-btn">Cancelar</button>
@@ -46,7 +46,7 @@
                     </tr>
                     <tr>
                         <td>hoy</td>
-                        <td><button class="edit-btn">Detalles</button></td>
+                        <td><button class="edit-btn" onclick="window.location.href='{{url ('detallesreportes')}}'">Detalles</button></td>
                         <td>
                             <button class="edit-btn">Editar</button>
                             <button class="delete-btn">Cancelar</button>
@@ -59,7 +59,7 @@
 
         <!-- Contenedor de botones y opciones -->
         <div class="options-container payment-form">
-            <button type="submit" class="pay-button">Agregar Reporte</button>
+            <button type="button" class="pay-button" onclick="window.location.href='{{ url('agregarReporte') }}'">Agregar Reporte</button>
             <select>
                 <option>Reporte por...</option>
                 <option>Mes</option>

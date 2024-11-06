@@ -31,12 +31,12 @@
         <br>
         <p>Se te enviará al correo que ingresaste un código de confirmación para validar tu registro</p>
         <x-input-text placeholder="Código"/>
-        <a href="">Reenviar código</a>
+        <a href="{{''}}">Reenviar código</a>
         <br>
         <br>
         <div class="btn-container">
-            <button type="button">Finalizar</button>
+            <button type="button" onclick="location.href='{{ url('inicioSesion') }}'">Finalizar</button>
         </div>
     </div>
 </body>
-</html>
+</html> 

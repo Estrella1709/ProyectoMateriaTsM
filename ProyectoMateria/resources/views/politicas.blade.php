@@ -9,7 +9,7 @@
             <h3>Políticas de cancelación</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia fuga ad possimus alias praesentium assumenda sapiente quas maxime nam cum consequatur saepe blanditiis, eveniet non sunt nulla itaque nemo necessitatibus!</p>
             <div class="buttons">
-                <button class="button edit-btn">Editar</button>
+                <button class="button edit-btn" onclick="window.location.href='{{ url('editarpoliticas') }}'">Editar</button>
             </div>
         </div>
 <br><br>

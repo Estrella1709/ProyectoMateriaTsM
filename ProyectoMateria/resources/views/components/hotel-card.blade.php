@@ -12,6 +12,6 @@
                 <span>{{ $amenity }}</span>
             @endforeach
         </div>
-        <button class="details-button">Detalles</button>
+        <button class="details-button" onclick="location.href='{{ url('detalleshotel') }}'">Detalles</button>
     </div>
 </div>

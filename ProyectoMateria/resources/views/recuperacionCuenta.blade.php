@@ -35,7 +35,8 @@
         <br>
         <br>
         <div class="btn-container">
-            <button type="button">Ingresar</button>
+            <button type="button" onclick="location.href='{{ url('hoteles') }}'">Ingresar</button>
+        </div>
         </div>
     </div>
 </body>

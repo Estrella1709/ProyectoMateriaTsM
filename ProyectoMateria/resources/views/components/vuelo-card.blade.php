@@ -7,6 +7,6 @@
         <h2>{{ $name }}</h2>
         <p>Origen: {{ $origen }}</p>
         <p>Destino: {{ $destiny }}</p>
-        <button class="details-button">Detalles</button>
+        <button class="details-button" onclick="window.location.href='{{url ('detallesvuelo') }}'">Detalles</button>
     </div>
 </div>

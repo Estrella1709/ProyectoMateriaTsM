@@ -33,11 +33,11 @@
         <x-input-text placeholder="Correo Electrónico"/>
         <x-input-text placeholder="Teléfono"/>
         <x-input-text placeholder="Contraseña"/>
-        <a href="">¿Ya tienes una cuenta?</a>
+        <a href="{{'inicioSesion'}}">¿Ya tienes una cuenta?</a>
         <br>
         <br>
         <div class="btn-container">
-            <button type="button">Registrar</button>    
+            <button type="button" onclick="window.location.href='{{ url('validacionRegistro') }}'">Registrar</button>    
         </div>
     </div>
 </body>

@@ -29,7 +29,7 @@
                     <div>DOM</div>
                 </div>
                 <div class="calendar-days" id="calendar-days"></div>
-                <button class="reserve-btn">Reservar</button>
+                <button class="reserve-btn" onclick="window.location.href='{{ url('reservavuelo') }}'">Reservar</button>
                 <p class="cancel-policy">Políticas de cancelación</p>
                 <p class="policy-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
