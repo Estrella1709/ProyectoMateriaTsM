@@ -9,7 +9,7 @@
             <h3>Código de recuperacion</h3>
             <x-textarea placeholder="esto es una prueba me quiero matar jajaja lololollo"/>
             <div class="buttons">
-                <button class="button edit-btn" onclick="window.location.href='{{url('notificaciones')}}'">Guardar Caambios</button>
+                <button class="button edit-btn" onclick="window.location.href='{{url('notificaciones')}}'">Guardar Cambios</button>
                 <button class="button delete-btn">Borrar</button>
             </div>
         </div>
