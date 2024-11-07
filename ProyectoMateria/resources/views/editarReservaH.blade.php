@@ -7,17 +7,20 @@
 <br>
 
         <div class="info-card">
-            <div>
-                <p>Hotel: </p>
-                <p>No. Habitaciones: <x-input-text placeholder="No. Habitaciones"/></p>
-                <p>Fecha Ingreso: <x-input-text placeholder="Fecha de ingreso"/></p>
-                <p>Fecha Salida: <x-input-text placeholder="Fecha de salida"/></p>
-                <p>Nombre Cliente: </p>
-            </div>
-            <div class="buttons">
-                <button class="button edit-btn" onclick="location.href='{{ url('CRUDhoteles') }}'">Confirmar Cambios</button>
-                <button class="button cancel-btn">Cancelar</button>
-            </div>
+            <form method="POST" action="/envEditResH">
+                @csrf
+                <div>
+                    <p>Hotel: </p>
+                    <p>No. Habitaciones: <x-input-text placeholder="No. Habitaciones" nombre="habitaciones" /></p>
+                    <p>Fecha Ingreso: <x-input-text placeholder="Fecha de ingreso (YYYY/MM/DD) " nombre="ingreso"/></p>
+                    <p>Fecha Salida: <x-input-text placeholder="Fecha de salida (YYYY/MM/DD)" nombre="salida"/></p>
+                    <p>Nombre Cliente: </p>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="button edit-btn" >Confirmar Cambios</button>
+                    <button class="button cancel-btn">Cancelar</button>
+                </div>
+            </form>
         </div>
         <br>
         <br>

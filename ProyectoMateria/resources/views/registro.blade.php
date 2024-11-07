@@ -27,18 +27,21 @@
             <img src="{{asset('img/Logo.png')}}" alt="Logo"> 
             <h1>Turista sin Maps</h1>
         </div>
-        <h3>Registro</h3>   
-        <x-input-text placeholder="Nombre"/>
-        <x-input-text placeholder="Apellidos"/>
-        <x-input-text placeholder="Correo Electrónico"/>
-        <x-input-text placeholder="Teléfono"/>
-        <x-input-text placeholder="Contraseña"/>
-        <a href="{{'inicioSesion'}}">¿Ya tienes una cuenta?</a>
-        <br>
-        <br>
-        <div class="btn-container">
-            <button type="button" onclick="window.location.href='{{ url('validacionRegistro') }}'">Registrar</button>    
-        </div>
+        <form method="POST" action="/envRegistro">
+            @csrf
+            <h3>Registro</h3>   
+            <x-input-text placeholder="Nombre" nombre="nombreRegistro"/>
+            <x-input-text placeholder="Apellidos" nombre="apRegistro"/>
+            <x-input-text placeholder="Correo  Electrónico" nombre="mailRegistro"/>
+            <x-input-text placeholder="Teléfono" nombre="telRegistro"/>
+            <x-input-text placeholder="Contraseña" nombre="pwdRegistro"/>
+            <a href="{{'/'}}">¿Ya tienes una cuenta?</a>
+            <br>
+            <br>
+            <div class="btn-container">
+                <button type="submit" >Registrar</button>    
+            </div>
+        </form>
     </div>
 </body>
 </html>

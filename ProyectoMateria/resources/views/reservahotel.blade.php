@@ -30,18 +30,29 @@
 
         <div class="payment-container">
             <h2>Método de Pago</h2>
-            <form class="payment-form">
+            <form method="POST" action="/envReservaH" class="payment-form">
+            @csrf
                 <select>
                     <option>Tipo de tarjeta</option>
                     <option>Visa</option>
                     <option>MasterCard</option>
                     <option>Amex</option>
                 </select>
-                <input type="text" placeholder="Número de tarjeta">
+                <input type="text" placeholder="Número de tarjeta" name="tarjeta">
+                <small> {{$errors->first('tarjeta')}} </small>
                 <div class="form-row">
-                    <input type="text" placeholder="Fecha">
-                    <input type="text" placeholder="CVV">
+                    <input type="text" placeholder="Mes(MM)" name="mes_exp">
+                    <input type="text" placeholder="Año(YY)" name="year_exp">
+                    <input type="text" placeholder="CVV" name="cvv">
                 </div>
+                <div class="form-row">
+                    <small> {{$errors->first('mes_exp')}} </small>
+                    <small> {{$errors->first('year_exp')}} </small>
+                    <small> {{$errors->first('cvv')}} </small>
+                </div>
+                @session('expirado')
+                <p>{{$value}}</p>
+                @endsession
                 <button type="submit" class="pay-button">Pagar</button>
             </form>
             <p class="cancel-policy">Políticas de cancelación</p>

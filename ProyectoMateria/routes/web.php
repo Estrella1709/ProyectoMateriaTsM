@@ -25,3 +25,15 @@ Route::get('/politicas', [controladorVistas::class, 'politicas'])->name('rutaPol
 Route::get('/editarpoliticas', [controladorVistas::class, 'editarpoliticas'])->name('rutaEditarPoliticas');
 Route::get('/editarUsuarios', [controladorVistas::class, 'editarUsuarios'])->name('rutaEditarUsuarios');
 Route::get('/editarReservaH', [controladorVistas::class, 'editarReservaH'])->name('rutaEditarReservaH');
+
+//Rutas para validaciones con formularios
+Route::post('/envLogin', [controladorVistas::class, 'procesarLogin'])->name('envLogin');
+Route::post('/envRegistro', [controladorVistas::class, 'procesarRegistro'])->name('envRegistro');
+Route::post('/envValReg', [controladorVistas::class, 'procesarValReg'])->name('envValReg');
+Route::post('/envNuevapwd', [controladorVistas::class, 'procesarNuevapwd'])->name('envNuevapwd');
+Route::post('/envEditResH', [controladorVistas::class, 'procEditResH'])->name('envEditResH');
+Route::post('/envEditUsuarios', [controladorVistas::class, 'procEditUsuarios'])->name('envEditUsuarios');
+Route::post('/envEditPoli', [controladorVistas::class, 'procEditPoli'])->name('envEditPoli');
+Route::post('/envEditNoti', [controladorVistas::class, 'procEditNoti'])->name('envEditNoti');
+Route::post('/envReservaH', [controladorVistas::class, 'procReservaH'])->name('envReservaH');
+Route::post('/envReservaV', [controladorVistas::class, 'procReservaV'])->name('envReservaV');

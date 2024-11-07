@@ -27,16 +27,19 @@
             <img src="{{asset('img/Logo.png')}}" alt="Logo"> 
             <h1>Turista sin Maps</h1>
         </div>
-        <h3>Registro</h3>   
-        <br>
-        <p>Se te enviará al correo que ingresaste un código de confirmación para validar tu registro</p>
-        <x-input-text placeholder="Código"/>
-        <a href="{{''}}">Reenviar código</a>
-        <br>
-        <br>
-        <div class="btn-container">
-            <button type="button" onclick="location.href='{{ url('inicioSesion') }}'">Finalizar</button>
-        </div>
+        <form method="POST" action="/envValReg">
+        @csrf
+            <h3>Registro</h3>   
+            <br>
+            <p>Se te enviará al correo que ingresaste un código de confirmación para validar tu registro</p>
+            <x-input-text placeholder="Código" nombre="codigo"/>
+            <a href="{{''}}">Reenviar código</a>
+            <br>
+            <br>
+            <div class="btn-container">
+                <button type="submit">Finalizar</button>
+            </div>
+        </form>
     </div>
 </body>
 </html> 

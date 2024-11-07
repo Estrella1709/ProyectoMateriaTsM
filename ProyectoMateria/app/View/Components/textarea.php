@@ -11,9 +11,12 @@ class textarea extends Component
     
     public $placeholder;
 
-    public function __construct($placeholder = 'Escribe aquí')
+    public $nombre;
+
+    public function __construct($placeholder = 'Escribe aquí', $nombre="mada")
     {
         $this->placeholder = $placeholder;
+        $this->nombre=$nombre;
     }
 
     public function render()
