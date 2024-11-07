@@ -23,7 +23,7 @@
                     <td>juan.perez@example.com</td>
                     <td>+1 555 123 456</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ url('editarUsuarios') }}'">Editar</button>
                         <button class="delete-btn">Borrar</button>
                     </td>
                 </tr>
@@ -32,7 +32,7 @@
                     <td>maria.gonzalez@example.com</td>
                     <td>+1 555 789 012</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ url('editarUsuarios') }}'">Editar</button>
                         <button class="delete-btn">Borrar</button>
                     </td>
                 </tr>
@@ -41,7 +41,7 @@
                     <td>pedro.martinez@example.com</td>
                     <td>+1 555 345 678</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ url('editarUsuarios') }}'">Editar</button>
                         <button class="delete-btn">Borrar</button>
                     </td>
                 </tr>

@@ -27,7 +27,7 @@
                     <td>mañana</td>
                     <td>Emiliano</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ url('editarReservaH') }}'">Editar</button>
                         <button class="delete-btn">Cancelar</button>
                     </td>
                 </tr>
@@ -38,7 +38,7 @@
                     <td>mañana</td>
                     <td>Emiliano</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ url('editarReservaH') }}'">Editar</button>
                         <button class="delete-btn">Cancelar</button>
                     </td>
                 </tr>
@@ -49,7 +49,7 @@
                     <td>mañana</td>
                     <td>Emiliano</td>
                     <td>
-                        <button class="edit-btn">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ url('editarReservaH') }}'">Editar</button>
                         <button class="delete-btn">Cancelar</button>
                     </td>
                 </tr>
