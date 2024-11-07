@@ -3,12 +3,14 @@
 @section('contenido')
 
 <br><br>
-
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
 <link rel="stylesheet" href="{{ asset('css/editarnoti.css') }}">
 <div class="info-card">
     <form method="POST" action="/envEditNoti">
     @csrf
-        <h3>Código de recuperacion</h3>
+        <h3>Edita el mensaje de tu notificación</h3>
         <x-textarea nombre="txtnotis" placeholder="esto es una prueba me quiero matar jajaja lololollo" />
         <small>{{$errors->first('txtnotis')}}</small>
         <div class="buttons">

@@ -19,7 +19,7 @@
             background-repeat: no-repeat;
         }
     </style>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="{{ asset('css/inicioSesion.css') }}">
 </head>
 
@@ -29,6 +29,11 @@
             <img src="{{asset('img/Logo.png')}}" alt="Logo">
             <h1>Turista sin Maps</h1>
         </div>
+
+        @if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
+
         <form method="POST" action="/envLogin">
             @csrf
             <h3>Inicio de Sesión</h3>
@@ -49,6 +54,8 @@
                 <button type="submit">Iniciar Sesión</button>
             </div>
         </form>
+
+        
     </div>
 </body>
 

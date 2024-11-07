@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Registro - Turista sin Maps</title>
     <style>
         body {
@@ -27,6 +28,11 @@
             <img src="{{asset('img/Logo.png')}}" alt="Logo"> 
             <h1>Turista sin Maps</h1>
         </div>
+
+        @if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
+
         <form method="POST" action="/envRegistro">
             @csrf
             <h3>Registro</h3>   

@@ -30,6 +30,13 @@
 
         <div class="payment-container">
             <h2>Método de Pago</h2>
+
+            @if(session('exito'))
+                <x-alert title="Éxito" text="{{ session('exito') }}"></x-alert>
+            @endif
+
+
+
             <form method="POST" action="/envReservaH" class="payment-form">
             @csrf
                 <select>

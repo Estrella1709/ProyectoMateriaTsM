@@ -1,7 +1,9 @@
 @extends('layouts.plantilla2')
 
 @section('contenido')
-
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
 <br><br>
 <link rel="stylesheet" href="{{ asset('css/notificaciones.css') }}">
 <div class="container-noti">

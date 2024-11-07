@@ -105,14 +105,17 @@ class controladorVistas extends Controller
 
     //Inicio de funciones para validaciones 
     public function procesarLogin(validarLogin $peticion){
+        session()->flash('exito', 'Se ha iniciado sesión correctamente');
         return to_route('rutaHoteles');
     }
 
     public function procesarRegistro(validarRegistro $peticion){
+        session()->flash('exito', 'Excelente!, estamos a unos pasos de completar tu registro');
         return to_route('rutaValidacionRegistro');
     }
 
     public function procesarValReg(validarValReg $peticion){
+        session()->flash('exito', 'Se ha validado correctamente tu registro. Bienvenido!');
         return to_route('rutaInicioSesion');
     }
 
@@ -122,6 +125,7 @@ class controladorVistas extends Controller
         $pwd2=$peticion->input('confnueva');
 
         if ($pwd1==$pwd2) {
+            session()->flash('exito', 'Tu contraseña ha sido actualizada correctamente!');
             return to_route('rutaHoteles');
         } else {
             session()->flash('diferentes', 'Las contraseñas no coinciden');
@@ -131,33 +135,40 @@ class controladorVistas extends Controller
     }
 
     public function procEditResH(validarEditResH $peticion){
+        session()->flash('exito', 'Se ha editado correctamente tu reserva');
         return to_route('rutaCRUDhoteles');
     }
 
     
     public function procEditUsuarios(validarEditUsuarios $peticion){
+        session()->flash('exito', 'Se ha editado correctamente tu Usuario');
         return to_route('rutaCRUDusuarios');
     }
 
     public function procEditPoli(validarEditPoliticas $peticion){
+        session()->flash('exito', 'Se han editado correctamente las políticas');
         return to_route('rutaPoliticas');
     }
 
     public function procEditNoti(validarEditNotis $peticion){
+        session()->flash('exito', 'Se ha editado correctamente el mensaje de tu notificación');
         return to_route('rutaNotificaciones');
     }
 
-    public function procReservaH(validarResVyH $peticion){
-        
-        $mes=$peticion->input('mes_exp');
-        $year=$peticion->input('year_exp');
-        if ($mes!=12 && $year==24) {
+    public function procReservaH(validarResVyH $peticion)
+    {
+        $mes = $peticion->input('mes_exp');
+        $year = $peticion->input('year_exp');
+
+        if ($mes != 12 && $year == 24) {
             session()->flash('expirado', 'Su tarjeta está expirada');
             return to_route('rutaReservaHotel');
         }
 
+        session()->flash('exito', 'Se ha hecho la reserva correctamente');
         return to_route('rutaHoteles');
     }
+
 
     public function procReservaV(validarResVyH $peticion){
         
@@ -168,6 +179,7 @@ class controladorVistas extends Controller
             return to_route('rutaReservavuelo');
         }
 
+        session()->flash('exito', 'Se ha hecho la reserva correctamente');
         return to_route('rutaVuelos');
     }
 }

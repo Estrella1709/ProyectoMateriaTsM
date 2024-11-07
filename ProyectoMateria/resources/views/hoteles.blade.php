@@ -3,6 +3,11 @@
 @section('contenido')
     <link rel="stylesheet" href="{{ asset('css/hotel.css') }}">
 
+    @if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
+
+
     <div class="container1">
         <!-- Sidebar de Filtros -->
         <aside class="sidebar">
@@ -112,5 +117,7 @@
 
         </main>
         
+        
+
     </div>
 @endsection

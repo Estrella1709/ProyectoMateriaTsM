@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Registro - Turista sin Maps</title>
     <style>
         body {
@@ -22,6 +23,11 @@
     <link rel="stylesheet" href="{{ asset('css/validacionRegistro.css') }}"> 
 </head>
 <body>
+
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
+
     <div class="container">
         <div class="header">
             <img src="{{asset('img/Logo.png')}}" alt="Logo"> 

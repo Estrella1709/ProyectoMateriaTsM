@@ -3,6 +3,9 @@
 @section('contenido')
 
 <br><br>
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
 
 <link rel="stylesheet" href="{{ asset('css/politicas.css') }}">
 <div class="info-card">

@@ -5,7 +5,9 @@
 <link rel="stylesheet" href="{{ asset('css/editarUsuarios.css') }}">
 <br>
 <br>
-
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
         <div class="info-card">
             <form method="POST" action="/envEditUsuarios">
             @csrf

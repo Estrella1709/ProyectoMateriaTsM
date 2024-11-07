@@ -2,6 +2,9 @@
 
 @section('contenido')
 
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
 <link rel="stylesheet" href="{{ asset('css/vuelos.css') }}">
 <div class="container5">
         <aside class="sidebar">

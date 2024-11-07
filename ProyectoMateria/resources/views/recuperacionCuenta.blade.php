@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <title>Inicio Sesión - Turista sin Maps</title>
     <style>
         body {
@@ -25,15 +26,11 @@
 </head>
 
 <body>
-    @session('diferentes')
-        <script>
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "{{$value}}",
-            });
-        </script>
-    @endsession
+    
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
+    
     <div class="container">
         <div class="header">
             <img src="{{asset('img/Logo.png')}}" alt="Logo">
