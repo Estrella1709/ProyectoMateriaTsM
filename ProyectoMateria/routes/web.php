@@ -37,3 +37,4 @@ Route::post('/envEditPoli', [controladorVistas::class, 'procEditPoli'])->name('e
 Route::post('/envEditNoti', [controladorVistas::class, 'procEditNoti'])->name('envEditNoti');
 Route::post('/envReservaH', [controladorVistas::class, 'procReservaH'])->name('envReservaH');
 Route::post('/envReservaV', [controladorVistas::class, 'procReservaV'])->name('envReservaV');
+Route::post('/envAgrRep', [controladorVistas::class, 'procAgrRep'])->name('envAgrRep');

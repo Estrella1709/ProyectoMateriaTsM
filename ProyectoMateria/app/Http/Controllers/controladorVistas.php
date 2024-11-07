@@ -11,6 +11,7 @@ use App\Http\Requests\validarEditUsuarios;
 use App\Http\Requests\validarEditPoliticas;
 use App\Http\Requests\validarEditNotis;
 use App\Http\Requests\validarResVyH;
+use App\Http\Requests\validarAgrRep;
 use Illuminate\Http\Request;
 
 class controladorVistas extends Controller
@@ -181,5 +182,10 @@ class controladorVistas extends Controller
 
         session()->flash('exito', 'Se ha hecho la reserva correctamente');
         return to_route('rutaVuelos');
+    }
+
+    public function procAgrRep(validarAgrRep $peticion){
+        session()->flash('exito', 'El reporte se agrego correctamente');
+        return to_route('rutaAgregarReporte');
     }
 }
