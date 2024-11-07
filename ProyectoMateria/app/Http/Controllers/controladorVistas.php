@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\validarLogin;
+use App\Http\Requests\validarRegistro;
+use App\Http\Requests\validarValReg;
+use App\Http\Requests\validarNuevapwd;
+use App\Http\Requests\validarEditResH;
+use App\Http\Requests\validarEditUsuarios;
+use App\Http\Requests\validarEditPoliticas;
+use App\Http\Requests\validarEditNotis;
+use App\Http\Requests\validarResVyH;
 use Illuminate\Http\Request;
 
 class controladorVistas extends Controller
@@ -92,5 +101,73 @@ class controladorVistas extends Controller
 
     public function editarReservaH(){
         return view('editarReservaH');
+    }
+
+    //Inicio de funciones para validaciones 
+    public function procesarLogin(validarLogin $peticion){
+        return to_route('rutaHoteles');
+    }
+
+    public function procesarRegistro(validarRegistro $peticion){
+        return to_route('rutaValidacionRegistro');
+    }
+
+    public function procesarValReg(validarValReg $peticion){
+        return to_route('rutaInicioSesion');
+    }
+
+    public function procesarNuevapwd(validarNuevapwd $peticion){
+
+        $pwd1=$peticion->input('pwdnueva');
+        $pwd2=$peticion->input('confnueva');
+
+        if ($pwd1==$pwd2) {
+            return to_route('rutaHoteles');
+        } else {
+            session()->flash('diferentes', 'Las contraseñas no coinciden');
+            return to_route('rutaRecuperacionCuenta');
+        }
+
+    }
+
+    public function procEditResH(validarEditResH $peticion){
+        return to_route('rutaCRUDhoteles');
+    }
+
+    
+    public function procEditUsuarios(validarEditUsuarios $peticion){
+        return to_route('rutaCRUDusuarios');
+    }
+
+    public function procEditPoli(validarEditPoliticas $peticion){
+        return to_route('rutaPoliticas');
+    }
+
+    public function procEditNoti(validarEditNotis $peticion){
+        return to_route('rutaNotificaciones');
+    }
+
+    public function procReservaH(validarResVyH $peticion){
+        
+        $mes=$peticion->input('mes_exp');
+        $year=$peticion->input('year_exp');
+        if ($mes!=12 && $year==24) {
+            session()->flash('expirado', 'Su tarjeta está expirada');
+            return to_route('rutaReservaHotel');
+        }
+
+        return to_route('rutaHoteles');
+    }
+
+    public function procReservaV(validarResVyH $peticion){
+        
+        $mes=$peticion->input('mes_exp');
+        $year=$peticion->input('year_exp');
+        if ($mes!=12 && $year==24) {
+            session()->flash('expirado', 'Su tarjeta está expirada');
+            return to_route('rutaReservavuelo');
+        }
+
+        return to_route('rutaVuelos');
     }
 }

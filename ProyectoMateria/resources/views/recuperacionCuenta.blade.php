@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Inicio Sesión - Turista sin Maps</title>
     <style>
         body {
@@ -12,32 +14,46 @@
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
-            background-image: url('img/inicioSesion1.jpg'); 
+            background-image: url('img/inicioSesion1.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
     </style>
 
-    <link rel="stylesheet" href="{{ asset('css/recuperacionCuenta.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/recuperacionCuenta.css') }}">
 </head>
+
 <body>
+    @session('diferentes')
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "{{$value}}",
+            });
+        </script>
+    @endsession
     <div class="container">
         <div class="header">
-            <img src="{{asset('img/Logo.png')}}" alt="Logo"> 
+            <img src="{{asset('img/Logo.png')}}" alt="Logo">
             <h1>Turista sin Maps</h1>
         </div>
-        <h3>Recuperacion de Cuenta</h3>   
-        <x-input-text placeholder="Código"/>
-        <x-input-text placeholder="Nueva Contraseña"/>
-        <x-input-text placeholder="Confirmar Contraseña"/>
-        <a href="">Reenviar código</a>
-        <br>
-        <br>
-        <div class="btn-container">
-            <button type="button" onclick="location.href='{{ url('hoteles') }}'">Ingresar</button>
-        </div>
-        </div>
+        <form method="POST" action="/envNuevapwd">
+            @csrf
+            <h3>Recuperacion de Cuenta</h3>
+            <x-input-text placeholder="Código" nombre="codigo" />
+            <x-input-text placeholder="Nueva Contraseña" nombre="pwdnueva" />
+            <x-input-text placeholder="Confirmar Contraseña" nombre="confnueva" />
+            <a href="">Reenviar código</a>
+            <br>
+            <br>
+            <div class="btn-container">
+                <button type="submit">Ingresar</button>
+            </div>
+        </form>
+    </div>
     </div>
 </body>
+
 </html>

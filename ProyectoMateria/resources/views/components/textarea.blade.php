@@ -1,1 +1,1 @@
-<textarea name="" id="" placeholder="{{ $placeholder }}"></textarea>
+<textarea name="{{$nombre}}" id="" placeholder="{{ $placeholder }}"></textarea>
