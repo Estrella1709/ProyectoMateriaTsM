@@ -10,7 +10,7 @@
     <div class="container">
         <!-- Contenedor de la tabla -->
         <div class="table-container">
-            <h2>Hoteles</h2>
+            <h2>Reportes</h2>
             <table>
                 <thead>
                     <tr>
