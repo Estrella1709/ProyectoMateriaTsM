@@ -15,7 +15,7 @@
                 <p>Nombre Cliente: </p>
             </div>
             <div class="buttons">
-                <button class="button edit-btn">Confirmar Cambios</button>
+                <button class="button edit-btn" onclick="location.href='{{ url('CRUDhoteles') }}'">Confirmar Cambios</button>
                 <button class="button cancel-btn">Cancelar</button>
             </div>
         </div>

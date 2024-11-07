@@ -13,7 +13,7 @@
                 <p>Teléfono: <x-input-text placeholder="Nuevo teléfono"/></p>
             </div>
             <div class="buttons">
-                <button class="button edit-btn">Confirmar Cambios</button>
+                <button class="button edit-btn" onclick="location.href='{{ url('CRUDusuarios') }}'">Confirmar Cambios</button>
                 <button class="button cancel-btn">Cancelar</button>
             </div>
         </div>
