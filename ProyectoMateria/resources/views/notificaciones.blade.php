@@ -7,7 +7,7 @@
 <div class="container-noti">
 <div class="info-card">
             <h3>Confirmación de cuenta</h3>
-            <p>Auxilio ya no quiero hacer nada me voy a morir, no se que mas poner asi que proceder a poner un lorem.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia fuga ad possimus alias praesentium assumenda sapiente quas maxime nam cum consequatur saepe blanditiis, eveniet non sunt nulla itaque nemo necessitatibus!</p>
+            <p>Auxilio ya la cague y no hice pull request, no se que mas poner asi que proceder a poner un lorem.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia fuga ad possimus alias praesentium assumenda sapiente quas maxime nam cum consequatur saepe blanditiis, eveniet non sunt nulla itaque nemo necessitatibus!</p>
             <div class="buttons">
                 <button class="button edit-btn" onclick="window.location.href='{{ url('editarnoti') }}'">Editar</button>
                 <button class="button delete-btn">Borrar</button>
