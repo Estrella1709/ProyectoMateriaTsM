@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id('id_usuarios');
+            $table->unsignedBigInteger('id_rol');
             $table->string('nombre', 50);
             $table->string('apellido', 50);
-            $table->string('email', 100);
-            $table->string('telefono',15);
+            $table->string('email', 100)->unique();
+            $table->string('telefono', 15);
             $table->string('password', 255);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('id_rol')->default(1)->constrained('roles', 'id_rol')->onDelete('cascade');
-            $table->boolean('two_factor')->nullable();
+            $table->dateTime('email_verified_at')->nullable();
+            $table->boolean('two_factor_authentication');
             $table->timestamps();
+        
+            $table->foreign('id_rol')->references('id_rol')->on('roles');
         });
+        
     }
 
     /**
