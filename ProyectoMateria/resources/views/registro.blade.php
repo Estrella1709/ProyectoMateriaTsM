@@ -13,7 +13,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
-            background-image: url('img/Registro.jpg'); 
+            background-image: url('{{asset('img/Registro.jpg')}}'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -33,7 +33,7 @@
     <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
     @endif
 
-        <form method="POST" action="/envRegistro">
+        <form method="POST" action="{{route('envRegistro')}}">
             @csrf
             <h3>Registro</h3>   
             <x-input-text placeholder="Nombre" nombre="nombreRegistro"/>

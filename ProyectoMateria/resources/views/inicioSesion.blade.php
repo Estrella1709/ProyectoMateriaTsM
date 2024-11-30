@@ -34,7 +34,7 @@
     <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
     @endif
 
-        <form method="POST" action="/envLogin">
+        <form method="POST" action="{{route('envLogin')}}">
             @csrf
             <h3>Inicio de Sesión</h3>
 
@@ -47,7 +47,7 @@
 
             <a href="{{'recuperacionCuenta'}}">¿Olvidaste tu contraseña?</a>
             <br>
-            <a href="{{'registro'}}">Registrarse</a>
+            <a href="{{route('rutaRegistro')}}">Registrarse</a>
             <br>
             <br>
             <div class="btn-container">
