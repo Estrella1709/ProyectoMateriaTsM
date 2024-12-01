@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UbicacionSeeder::class,
             AerolineaSeeder::class,
             VueloSeeder::class,
+            HotelesSeeder::class,
         ]);
     }
 }    

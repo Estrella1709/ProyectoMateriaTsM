@@ -3,7 +3,7 @@
     <div class="hotel-image">
         <img src="{{ asset($image) }}" alt="Hotel">
     </div>
-    <div class="hotel-info">
+    <div class="hotel-info" style="color: black;">
         <h2>{{ $name }}</h2>
         <p>Categoría <span class="stars">{{ $category }}</span></p>
         <p>Habitaciones: {{ $rooms }}</p>

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('hoteles', function (Blueprint $table) {
             $table->id('id_hotel');
             $table->string('nombre_hotel', 100);
-            $table->decimal('calificacion_usuarios', 2, 2);
+            $table->decimal('calificacion_usuarios',5,2);
             $table->integer('estrellas');
             $table->string('descripcion', 255);
             $table->integer('capacidad');
-            $table->integer('numero_huespedes');
+            $table->integer('numero_huespedes')->nullable();
             $table->unsignedBigInteger('ubicacion');
             $table->decimal('precio_noche', 10, 2);
             $table->integer('disponibilidad_habitaciones');
@@ -26,6 +26,9 @@ return new class extends Migration
             $table->boolean('piscina');
             $table->boolean('desayuno');
             $table->decimal('distancia_al_centro', 5, 2);
+            $table->date('fecha_desde')->nullable();
+            $table->date('fecha_hasta')->nullable();
+            $table->integer('numero_habitaciones')->nullable();
             $table->timestamps();
         
             $table->foreign('ubicacion')->references('id_ubicacion')->on('ubicaciones');
