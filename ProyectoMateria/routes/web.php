@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\VueloController;
+
 
 Route::get('/', [controladorVistas::class, 'inicioSesion'])->name('rutaInicioSesion');
 Route::get('/validacionRegistro', [controladorVistas::class, 'validacionRegistro'])->name('rutaValidacionRegistro');
@@ -47,6 +49,8 @@ Route::post('/envAgrRep', [controladorVistas::class, 'procAgrRep'])->name('envAg
 Route::resource('usuario', UsuarioController::class);
 Route::post('/envLogin', [AuthController::class, 'login'])->name('envLogin');
 
+//Ruta de tipo resource para vuelos
+Route::resource('vuelos', VueloController::class);
 /*
 //Rutas para la validacion del registro
 //Esto poner las rutas en un grupo, todas en el grupo tienen el middleware auth
@@ -65,3 +69,4 @@ Route::middleware('auth')->group(function(){
 });
 
 */
+

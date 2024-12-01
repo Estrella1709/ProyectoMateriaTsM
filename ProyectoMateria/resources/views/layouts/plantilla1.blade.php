@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turista sin Maps</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/plantilla1.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 <body>
     <!-- Header -->
-    <header class="container">
-        <h1><img id="logo" src="{{ asset('img/Logo.png') }}"> Turista sin Maps</h1>
-        <section>
-            <a href="{{'hoteles'}}"><h2 id="hoteles">Hoteles</h2></a>
-            <a href="{{'vuelos'}}"><h2 id="vuelos">Vuelos</h2></a>
-        </section>
+    <header class="container-fluid bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="mb-0"><img id="logo" src="{{ asset('img/Logo.png') }}" alt="Logo" class="img-fluid" style="height: 50px;"> Turista sin Maps</h1>
+            <nav>
+                <a href="{{ url('hoteles') }}" class="text-white mx-3">Hoteles</a>
+                <a href="{{ url('vuelos') }}" class="text-white mx-3">Vuelos</a>
+            </nav>
+        </div>
     </header>
 
+    <main class="container my-4">
         @yield('contenido')
+    </main>
     
     <footer class="footer bg-dark text-white text-center py-3">
         <div class="container">
@@ -26,5 +30,8 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

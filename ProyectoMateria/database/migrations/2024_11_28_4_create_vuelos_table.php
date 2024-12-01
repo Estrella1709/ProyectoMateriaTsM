@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('vuelos', function (Blueprint $table) {
             $table->id('id_vuelo');
-            $table->unsignedBigInteger('id_ubicacion');
+            $table->unsignedBigInteger('id_origen');
+            $table->unsignedBigInteger('id_destino');
             $table->unsignedBigInteger('id_aerolinea');
             $table->date('fecha_salida');
-            $table->date('fecha_regreso');
+            $table->date('fecha_regreso')->nullable();
             $table->time('horario_salida');
             $table->time('horario_llegada');
             $table->integer('capacidad');
@@ -26,9 +27,13 @@ return new class extends Migration
             $table->integer('disponibilidad_asientos');
             $table->timestamps();
         
-            $table->foreign('id_ubicacion')->references('id_ubicacion')->on('ubicaciones');
-            $table->foreign('id_aerolinea')->references('id_aerolinea')->on('aerolineas');
+            // Claves foráneas
+            $table->foreign('id_origen')->references('id_ubicacion')->on('ubicaciones')->onDelete('cascade');
+            $table->foreign('id_destino')->references('id_ubicacion')->on('ubicaciones')->onDelete('cascade');
+            $table->foreign('id_aerolinea')->references('id_aerolinea')->on('aerolineas')->onDelete('cascade');
         });
+        
+        
         
     }
 
