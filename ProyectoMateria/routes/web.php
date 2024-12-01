@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
+use App\Http\Controllers\VueloController;
+
+
 
 Route::get('/', [controladorVistas::class, 'inicioSesion'])->name('rutaInicioSesion');
 Route::get('/registro', [controladorVistas::class, 'registro'])->name('rutaRegistro');
@@ -38,3 +41,7 @@ Route::post('/envEditNoti', [controladorVistas::class, 'procEditNoti'])->name('e
 Route::post('/envReservaH', [controladorVistas::class, 'procReservaH'])->name('envReservaH');
 Route::post('/envReservaV', [controladorVistas::class, 'procReservaV'])->name('envReservaV');
 Route::post('/envAgrRep', [controladorVistas::class, 'procAgrRep'])->name('envAgrRep');
+
+
+
+Route::resource('vuelos', VueloController::class);
