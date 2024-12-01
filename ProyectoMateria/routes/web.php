@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\clienteController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\usuariosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
@@ -31,7 +32,6 @@ Route::get('/editarUsuarios', [controladorVistas::class, 'editarUsuarios'])->nam
 Route::get('/editarReservaH', [controladorVistas::class, 'editarReservaH'])->name('rutaEditarReservaH');
 
 //Rutas para validaciones con formularios
-Route::post('/envLogin', [controladorVistas::class, 'procesarLogin'])->name('envLogin');
 Route::post('/envValReg', [controladorVistas::class, 'procesarValReg'])->name('envValReg');
 Route::post('/envNuevapwd', [controladorVistas::class, 'procesarNuevapwd'])->name('envNuevapwd');
 Route::post('/envEditResH', [controladorVistas::class, 'procEditResH'])->name('envEditResH');
@@ -44,9 +44,10 @@ Route::post('/envAgrRep', [controladorVistas::class, 'procAgrRep'])->name('envAg
 
 
 //Rutas de usuarios
-Route::get('/registro/create', [usuariosController::class, 'create'])->name('rutaRegistro');
-Route::post('/envRegistro', [AuthController::class, 'store'])->name('envRegistro');
+Route::resource('usuario', UsuarioController::class);
+Route::post('/envLogin', [AuthController::class, 'login'])->name('envLogin');
 
+/*
 //Rutas para la validacion del registro
 //Esto poner las rutas en un grupo, todas en el grupo tienen el middleware auth
 Route::middleware('auth')->group(function(){
@@ -62,3 +63,5 @@ Route::middleware('auth')->group(function(){
     Route::post('/email/verification-notification', [AuthController::class, 'verifyHandler'])
     ->middleware('throttle:6,1')->name('verification.send');
 });
+
+*/

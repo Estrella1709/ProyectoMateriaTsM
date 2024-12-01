@@ -35,7 +35,7 @@ class controladorVistas extends Controller
     }
 
     public function hoteles(){
-        Mail::to('mike@gmail.com')->send(new WelcomeMail());
+        //Mail::to('mike@gmail.com')->send(new WelcomeMail());
         return view('hoteles');
     }
 

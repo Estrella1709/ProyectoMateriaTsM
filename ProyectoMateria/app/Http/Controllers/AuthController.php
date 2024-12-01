@@ -4,18 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\validarRegistro;
+use App\Http\Requests\validarLogin;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Models\usuario;
 
 class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function login(validarLogin $request){
+        
+        $user = DB::table('usuarios')->where('email', $request->input('correoLogin'))->first();
+        $credentials = [
+            'email' => $request->input('correoLogin'), 
+            'password' => $request->input('pwdLogin')
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            session()->flash('exito', 'Bienvenido: '. $user->nombre);
+            return redirect()->route('rutaHoteles');
+        }
+ 
+        return back()->withErrors([
+            'correoLogin' => 'The provided credentials do not match our records.',
+        ])->onlyInput('correoLogin');
+
+
+    }
     public function index()
     {
         //
@@ -32,30 +52,6 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // Inserta y obtiene el id del usuario
-        $userId = DB::table('usuarios')->insertGetId([
-            'nombre' => $request->input('nombreRegistro'),
-            'apellido' => $request->input('apRegistro'),
-            'email' => $request->input('mailRegistro'),
-            'telefono' => $request->input('telRegistro'),
-            'password' => bcrypt($request->input('pwdRegistro')),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-        
-        // Info del usuario recien registrado
-        $usuario=DB::table('usuarios')->where('id_usuarios', $userId)->first();
-
-        // Inicia la sesion de nuestro usuario
-        Auth::loginUsingId($userId);
-
-        event(new Registered($usuario));
-
-        session()->flash('exito', 'Excelente!, estamos a unos pasos de completar tu registro, usuario: ' . $request->input('nombreRegistro'));
-        return to_route('rutaValidacionRegistro');
-    }
 
 
     /**
@@ -89,6 +85,7 @@ class AuthController extends Controller
     {
         //
     }
+
 
     public function verifyNotice() {
         return view('validacionRegistro');

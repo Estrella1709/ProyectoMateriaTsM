@@ -33,7 +33,7 @@
     <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
     @endif
 
-        <form method="POST" action="{{route('envRegistro')}}">
+        <form method="POST" action="{{route('usuario.store')}}">
             @csrf
             <h3>Registro</h3>   
             <x-input-text placeholder="Nombre" nombre="nombreRegistro"/>

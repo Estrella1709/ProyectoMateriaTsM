@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id('id_usuarios');
-            $table->unsignedBigInteger('id_rol');
+            $table->unsignedBigInteger('id_rol')->default(1);
             $table->string('nombre', 50);
             $table->string('apellido', 50);
             $table->string('email', 100)->unique();
             $table->string('telefono', 15);
             $table->string('password', 255);
             $table->dateTime('email_verified_at')->nullable();
-            $table->boolean('two_factor_authentication');
+            $table->boolean('two_factor_authentication')->nullable();
             $table->timestamps();
         
             $table->foreign('id_rol')->references('id_rol')->on('roles');

@@ -47,7 +47,7 @@
 
             <a href="{{'recuperacionCuenta'}}">¿Olvidaste tu contraseña?</a>
             <br>
-            <a href="{{route('rutaRegistro')}}">Registrarse</a>
+            <a href="{{route('usuario.create')}}">Registrarse</a>
             <br>
             <br>
             <div class="btn-container">

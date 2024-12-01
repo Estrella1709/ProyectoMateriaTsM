@@ -33,7 +33,7 @@
             <img src="{{asset('img/Logo.png')}}" alt="Logo"> 
             <h1>Turista sin Maps</h1>
         </div>
-        <form method="POST" action="{{route('verification.send')}}">
+        <form method="" action="{{route('rutaInicioSesion')}}">
         @csrf
             <h3>Registro</h3>   
             <br>
