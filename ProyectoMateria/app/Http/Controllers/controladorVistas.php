@@ -12,14 +12,16 @@ use App\Http\Requests\validarEditPoliticas;
 use App\Http\Requests\validarEditNotis;
 use App\Http\Requests\validarResVyH;
 use App\Http\Requests\validarAgrRep;
+use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class controladorVistas extends Controller
 {
     public function inicioSesion(){
         return view('inicioSesion');
     }
-
+    
     public function registro(){
         return view('registro');
     }
@@ -33,6 +35,7 @@ class controladorVistas extends Controller
     }
 
     public function hoteles(){
+        //Mail::to('mike@gmail.com')->send(new WelcomeMail());
         return view('hoteles');
     }
 
