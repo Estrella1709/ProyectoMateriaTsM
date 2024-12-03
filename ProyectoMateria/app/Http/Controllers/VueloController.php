@@ -49,7 +49,7 @@ class VueloController extends Controller
     {
         $aerolineas = Aerolinea::all();
         $ubicaciones = Ubicacion::all();
-        return view('crudvuelos.create', compact('aerolineas', 'ubicaciones'));
+        return view('vuelos.create', compact('aerolineas', 'ubicaciones'));
     }
 
     /**
@@ -74,7 +74,7 @@ class VueloController extends Controller
 
         Vuelo::create($request->all());
 
-        return redirect()->route('crudvuelos.index')->with('success', 'Vuelo creado exitosamente.');
+        return redirect()->route('vuelos.index')->with('success', 'Vuelo creado exitosamente.');
     }
 
     /**
@@ -92,7 +92,7 @@ class VueloController extends Controller
     {
         $aerolineas = Aerolinea::all();
         $ubicaciones = Ubicacion::all();
-        return view('crudvuelos.edit', compact('vuelo', 'aerolineas', 'ubicaciones'));
+        return view('vuelos.edit', compact('vuelo', 'aerolineas', 'ubicaciones'));
     }
 
     /**
@@ -117,7 +117,7 @@ class VueloController extends Controller
 
         $vuelo->update($request->all());
 
-        return redirect()->route('crudvuelos.index')->with('success', 'Vuelo actualizado exitosamente.');
+        return redirect()->route('vuelos.index')->with('success', 'Vuelo actualizado exitosamente.');
     }
 
     /**
@@ -127,6 +127,6 @@ class VueloController extends Controller
     {
         $vuelo->delete();
 
-        return redirect()->route('crudvuelos.index')->with('success', 'Vuelo eliminado exitosamente.');
+        return redirect()->route('vuelos.index')->with('success', 'Vuelo eliminado exitosamente.');
     }
 }
