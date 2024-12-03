@@ -53,7 +53,6 @@ Route::post('/envLogin', [AuthController::class, 'login'])->name('envLogin');
 Route::resource('vuelos', VueloController::class);
 Route::resource('hoteles', HotelController::class);
 
-/*
 //Rutas para la validacion del registro
 //Esto poner las rutas en un grupo, todas en el grupo tienen el middleware auth
 Route::middleware('auth')->group(function(){
@@ -69,4 +68,3 @@ Route::middleware('auth')->group(function(){
     Route::post('/email/verification-notification', [AuthController::class, 'verifyHandler'])
     ->middleware('throttle:6,1')->name('verification.send');
 });
-*/
