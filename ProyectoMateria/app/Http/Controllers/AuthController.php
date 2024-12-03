@@ -98,7 +98,7 @@ class AuthController extends Controller
     public function verifyEmail(EmailVerificationRequest $request) {
         $request->fulfill();
      
-        return redirect('/vuelos');
+        return redirect()->route('rutaVuelos');
     }
 
     public function verifyHandler(Request $request) {

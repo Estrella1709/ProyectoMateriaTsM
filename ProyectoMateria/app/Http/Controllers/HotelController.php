@@ -54,7 +54,10 @@ class HotelController extends Controller
     }
 
     public function CRUDhoteles(){
-        $hoteles=Hotel::all();
+        $hoteles = DB::table('hoteles')
+        ->join('ubicaciones', 'hoteles.ubicacion', '=', 'ubicaciones.id_ubicacion')
+        ->select('hoteles.*', 'ubicaciones.nombre as nombre_ubicacion')
+        ->get();
         return view('CRUDhoteles', compact('hoteles'));
     }
 
@@ -142,8 +145,14 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hotel $hotel)
+    public function destroy($id_hotel)
     {
-        //
+        
+        $delete_hotel=Hotel::find( $id_hotel);
+        $nombre=$delete_hotel->nombre_hotel;
+        $delete_hotel->delete();
+
+        session()->flash('eliminado', 'Se elimino '.$nombre);
+        return redirect()->back();
     }
 }

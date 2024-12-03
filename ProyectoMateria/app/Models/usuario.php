@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
 
-class usuario extends Authenticatable
+
+class usuario extends Authenticatable implements MustVerifyEmail
 {
+    use Notifiable;
     // Especifica el nombre de la tabla si no sigue la convención de pluralización
     protected $table = 'usuarios';
 

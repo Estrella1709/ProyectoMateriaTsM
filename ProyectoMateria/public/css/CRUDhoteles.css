@@ -4,7 +4,7 @@
 
 .table-container {
     width: 80%;
-    max-width: 800px;
+    max-width: 1600px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -109,7 +109,7 @@ tr:hover {
     display: flex;
     justify-content: space-between;
     width: 80%;
-    max-width: 800px;
+    max-width:900px;
     margin: 0 auto;
     gap: 20px;
 }
