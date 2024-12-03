@@ -47,7 +47,9 @@ class VueloController extends Controller
      */
     public function create()
     {
-        //
+        $aerolineas = Aerolinea::all();
+        $ubicaciones = Ubicacion::all();
+        return view('vuelos.create', compact('aerolineas', 'ubicaciones'));
     }
 
     /**
@@ -55,7 +57,24 @@ class VueloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_origen' => 'required',
+            'id_destino' => 'required',
+            'id_aerolinea' => 'required',
+            'fecha_salida' => 'required|date',
+            'fecha_regreso' => 'nullable|date',
+            'horario_salida' => 'required',
+            'horario_llegada' => 'required',
+            'capacidad' => 'required|integer',
+            'pasajeros' => 'required|integer',
+            'precio' => 'required|numeric',
+            'escalas' => 'nullable|string',
+            'disponibilidad_asientos' => 'required|integer',
+        ]);
+
+        Vuelo::create($request->all());
+
+        return redirect()->route('vuelos.index')->with('success', 'Vuelo creado exitosamente.');
     }
 
     /**
@@ -69,24 +88,45 @@ class VueloController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(vuelo $vuelo)
+    public function edit(Vuelo $vuelo)
     {
-        //
+        $aerolineas = Aerolinea::all();
+        $ubicaciones = Ubicacion::all();
+        return view('vuelos.edit', compact('vuelo', 'aerolineas', 'ubicaciones'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, vuelo $vuelo)
+    public function update(Request $request, Vuelo $vuelo)
     {
-        //
+        $request->validate([
+            'id_origen' => 'required',
+            'id_destino' => 'required',
+            'id_aerolinea' => 'required',
+            'fecha_salida' => 'required|date',
+            'fecha_regreso' => 'nullable|date',
+            'horario_salida' => 'required',
+            'horario_llegada' => 'required',
+            'capacidad' => 'required|integer',
+            'pasajeros' => 'required|integer',
+            'precio' => 'required|numeric',
+            'escalas' => 'nullable|string',
+            'disponibilidad_asientos' => 'required|integer',
+        ]);
+
+        $vuelo->update($request->all());
+
+        return redirect()->route('vuelos.index')->with('success', 'Vuelo actualizado exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(vuelo $vuelo)
+    public function destroy(Vuelo $vuelo)
     {
-        //
+        $vuelo->delete();
+
+        return redirect()->route('vuelos.index')->with('success', 'Vuelo eliminado exitosamente.');
     }
 }
