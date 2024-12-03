@@ -33,6 +33,15 @@ class VueloController extends Controller
         if ($request->filled('escalas')) {
             $query->where('escalas', $request->escalas);
         }
+        
+        if ($request->filled('hora_salida')) {
+            $query->where('horario_salida', $request->salida);
+        }
+
+        if ($request->filled('hora_llegada')) {
+            $query->where('horario_llegada', $request->llegada);
+        }
+
 
         // Datos necesarios para los filtros
         $vuelos = $query->with(['aerolinea', 'origen', 'destino'])->get();
