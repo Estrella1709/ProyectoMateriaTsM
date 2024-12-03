@@ -16,6 +16,7 @@
             <nav>
                 <a href="{{ url('hoteles') }}" class="text-white mx-3">Hoteles</a>
                 <a href="{{ url('vuelos') }}" class="text-white mx-3">Vuelos</a>
+                <a href="{{ url('reservavuelo') }}" class="text-white mx-3">Reservas</a>
             </nav>
         </div>
     </header>

@@ -4,7 +4,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HotelController extends Controller
 {
@@ -51,12 +53,18 @@ class HotelController extends Controller
         return view('hoteles', compact('hoteles'));
     }
 
+    public function CRUDhoteles(){
+        $hoteles=Hotel::all();
+        return view('CRUDhoteles', compact('hoteles'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $ciudades=Ubicacion::all();
+        return view('agregarHotel', compact('ciudades'));
     }
 
     /**
@@ -64,7 +72,26 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addHotel=new Hotel();
+
+        $addHotel->nombre_hotel=$request->input('nombre_h');
+        $addHotel->estrellas=intval($request->input('estrellas'));
+        $addHotel->descripcion=$request->input('txtDesc_h');
+        $addHotel->capacidad=intval($request->input('capacidad'));
+        $addHotel->ubicacion=intval($request->input('ubicacion'));
+        $addHotel->precio_noche=floatval($request->input('precio_n'));
+        $addHotel->disponibilidad_habitaciones=intval($request->input('capacidad'));
+        $addHotel->wifi = intval($request->input('wifi'));
+        $addHotel->piscina = intval($request->input('piscina'));
+        $addHotel->desayuno = intval($request->input('desayuno'));
+        $addHotel->distancia_al_centro = floatval($request->input('dist_centro'));
+
+        $addHotel->calificacion_usuarios=0.0; //Por defecto no hay calificaciones de usuarios
+        
+        $addHotel->save();
+
+        session()->flash('exito', 'Se registro exitosamente el hotel');
+        return to_route('rutaCRUDhoteles');
     }
 
     /**
@@ -72,23 +99,44 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Hotel $hotel)
+    public function edit(string $id)
     {
-        //
+        $hotel=DB::table('hoteles')->where('id_hotel', $id)->first();
+        $ciudades = DB::table('ubicaciones')->get();
+        $ciudadSeleccionada = DB::table('ubicaciones')->where('id_ubicacion', $hotel->ubicacion)->first(); // Ciudad del hotel
+        return view('editarHoteles', compact('hotel', 'ciudades', 'ciudadSeleccionada'));
+    
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, $id_hotel)
     {
-        //
+        $update_hotel=Hotel::find( $id_hotel);
+
+        $update_hotel->nombre_hotel=$request->input('nombre_h');
+        $update_hotel->estrellas=intval($request->input('estrellas'));
+        $update_hotel->capacidad=intval($request->input('capacidad'));
+        $update_hotel->ubicacion=intval($request->input('ubicacion'));
+        $update_hotel->precio_noche=floatval($request->input('precio_n'));
+        $update_hotel->disponibilidad_habitaciones=intval($request->input('capacidad'));
+        $update_hotel->distancia_al_centro = floatval($request->input('dist_centro'));
+        $update_hotel->wifi = intval($request->input('wifi'));
+        $update_hotel->piscina = intval($request->input('piscina'));
+        $update_hotel->desayuno = intval($request->input('desayuno'));
+        $update_hotel->descripcion=$request->input('txtDesc_h');
+        
+        $update_hotel->update();
+
+        session()->flash('editado', 'Se edito exitosamente '. $request->input('nombre_h'));
+        return to_route('rutaCRUDhoteles');
     }
 
     /**
