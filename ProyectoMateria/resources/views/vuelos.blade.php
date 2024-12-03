@@ -98,7 +98,7 @@
                                     <p class="card-text text-dark">Fecha de Regreso: {{ \Carbon\Carbon::parse($vuelo->fecha_regreso)->format('d/m/Y') ?? 'No disponible' }}</p>
                                     <p class="card-text text-dark">Escalas: {{ $vuelo->escalas }}</p>
                                     <p class="card-text text-dark">Disponibilidad de Asientos: {{ $vuelo->disponibilidad_asientos }}</p>
-                                    <a href="#" class="btn btn-primary">Detalles</a>
+                                    <a href="" class="btn btn-primary">Detalles</a>
                                 </div>
                             </div>
                         </div>
