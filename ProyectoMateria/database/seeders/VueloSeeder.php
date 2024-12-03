@@ -38,6 +38,21 @@ class VueloSeeder extends Seeder
                 'pasajeros' => 170,
                 'precio' => 2800.0,
             ],
+
+            [
+                'capacidad' => 300,
+                'disponibilidad_asientos' => 10,
+                'escalas' => '1 escala',
+                'fecha_regreso' => '2024-12-23',
+                'fecha_salida' => '2024-12-17',
+                'horario_llegada' => '19:30:00',
+                'horario_salida' => '10:00:00',
+                'id_aerolinea' => 2,
+                'id_origen' => 1, // Cambiado de 'id_ubicacion' a 'id_origen'
+                'id_destino' => 5,
+                'pasajeros' => 290,
+                'precio' => 4000.0,
+            ],
         ]);
     }
 }

@@ -1,18 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\clienteController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\usuariosController;
+use App\Http\Controllers\VueloController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\VueloController;
-use App\Http\Controllers\HotelController;
-
-
-
 
 Route::get('/', [controladorVistas::class, 'inicioSesion'])->name('rutaInicioSesion');
 Route::get('/validacionRegistro', [controladorVistas::class, 'validacionRegistro'])->name('rutaValidacionRegistro');
@@ -24,7 +19,7 @@ Route::get('/vuelos', [controladorVistas::class, 'vuelos'])->middleware('verifie
 Route::get('/detallesvuelo', [controladorVistas::class, 'detallesvuelo'])->name('rutaDetallesVuelo');
 Route::get('/reservavuelo', [controladorVistas::class, 'reservavuelo'])->name('rutaReservavuelo');
 Route::get('/CRUDusuarios', [controladorVistas::class, 'CRUDusuarios'])->name('rutaCRUDusuarios');
-Route::get('/CRUDhoteles', [controladorVistas::class, 'CRUDhoteles'])->name('rutaCRUDhoteles');
+Route::get('/CRUDhoteles', [HotelController::class, 'CRUDhoteles'])->name('rutaCRUDhoteles');
 Route::get('/CRUDvuelos', [controladorVistas::class, 'CRUDvuelos'])->name('rutaCRUDvuelos');
 Route::get('/CRUDreportes', [controladorVistas::class, 'CRUDreportes'])->name('rutaCRUDreportes');
 Route::get('/detallesreportes', [controladorVistas::class, 'detallesreportes'])->name('rutaDetallesReportes');
@@ -35,6 +30,8 @@ Route::get('/politicas', [controladorVistas::class, 'politicas'])->name('rutaPol
 Route::get('/editarpoliticas', [controladorVistas::class, 'editarpoliticas'])->name('rutaEditarPoliticas');
 Route::get('/editarUsuarios', [controladorVistas::class, 'editarUsuarios'])->name('rutaEditarUsuarios');
 Route::get('/editarReservaH', [controladorVistas::class, 'editarReservaH'])->name('rutaEditarReservaH');
+
+
 
 //Rutas para validaciones con formularios
 Route::post('/envValReg', [controladorVistas::class, 'procesarValReg'])->name('envValReg');
@@ -55,7 +52,6 @@ Route::post('/envLogin', [AuthController::class, 'login'])->name('envLogin');
 //Resource type routes
 Route::resource('vuelos', VueloController::class);
 Route::resource('hoteles', HotelController::class);
-
 /*
 //Rutas para la validacion del registro
 //Esto poner las rutas en un grupo, todas en el grupo tienen el middleware auth
@@ -74,4 +70,3 @@ Route::middleware('auth')->group(function(){
 });
 
 */
-

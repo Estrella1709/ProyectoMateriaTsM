@@ -27,7 +27,11 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             session()->flash('exito', 'Bienvenido: '. $user->nombre);
-            return redirect()->route('rutaHoteles');
+            if ($user->id_rol==1) {
+                return redirect()->route('hoteles.index');
+            } elseif ($user->id_rol==2) {
+                return redirect()->route('rutaPoliticas');
+            }
         }
  
         return back()->withErrors([

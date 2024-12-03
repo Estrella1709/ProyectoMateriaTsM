@@ -4,11 +4,15 @@
 
 @if(session('exito'))
     <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
-    @endif
-    <link rel="stylesheet" href="{{ asset('css/CRUDhoteles.css') }}">
-    <br>
-    <br>
-    <br>
+@endif
+@session('editado')
+    <x-alert title="Hotel editado" text="{{ session('editado') }}"></x-alert>
+@endsession
+<link rel="stylesheet" href="{{ asset('css/CRUDhoteles.css') }}">
+<br>
+<br>
+<br>
+<div class="container">
     <div class="table-container">
         <h2>Hoteles</h2>
         <table>
@@ -23,46 +27,31 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($hoteles as $hotel)
                 <tr>
-                    <td>Gran hotel</td>
-                    <td>2</td>
-                    <td>hoy</td>
-                    <td>mañana</td>
-                    <td>Emiliano</td>
+                    <td>{{$hotel->nombre_hotel}}</td>
+                    <td>{{$hotel->capacidad}}</td>
+                    <td>{{$hotel->estrellas}}</td>
+                    <td>{{$hotel->ubicacion}}</td>
+                    <td>{{$hotel->precio_noche}}</td>
                     <td>
-                        <button class="edit-btn" onclick="location.href='{{ url('editarReservaH') }}'">Editar</button>
+                        <button class="edit-btn" onclick="location.href='{{ route('hoteles.edit', $hotel->id_hotel) }}'">Editar</button>
                         <button class="delete-btn">Cancelar</button>
                     </td>
                 </tr>
-                <tr>
-                <td>Gran hotel</td>
-                    <td>2</td>
-                    <td>hoy</td>
-                    <td>mañana</td>
-                    <td>Emiliano</td>
-                    <td>
-                        <button class="edit-btn" onclick="location.href='{{ url('editarReservaH') }}'">Editar</button>
-                        <button class="delete-btn">Cancelar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Gran hotel</td>
-                    <td>2</td>
-                    <td>hoy</td>
-                    <td>mañana</td>
-                    <td>Emiliano</td>
-                    <td>
-                        <button class="edit-btn" onclick="location.href='{{ url('editarReservaH') }}'">Editar</button>
-                        <button class="delete-btn">Cancelar</button>
-                    </td>
-                </tr>
+                @endforeach
+                
                 <!-- Agrega más filas según sea necesario -->
             </tbody>
         </table>
     </div>
-    <br>
-    <br>
-    <br>
+    <!-- Contenedor de botones y opciones -->
+    <div class="options-container payment-form">
+        <button type="button" class="pay-button" onclick="window.location.href='{{ route('hoteles.create') }}'">Agregar
+            Hotel</button>
+    </div>
+</div>
+<br>
+<br>
+<br>
 @endsection
-
- 
