@@ -26,20 +26,10 @@
             </div>
         </div>
             <div class="calendar-container">
-                <div class="calendar-header">
-                    <button id="prev-month">◀</button>
-                    <h2 id="month-year"></h2>
-                    <button id="next-month">▶</button>
-                </div>
-                <div class="calendar-weekdays">
-                    <div>LUN</div>
-                    <div>MAR</div>
-                    <div>MIÉ</div>
-                    <div>JUE</div>
-                    <div>VIE</div>
-                    <div>SÁB</div>
-                    <div>DOM</div>
-                </div>
+            <div class="form-group">
+                <input type="date" class="custom-input" placeholder="Fecha de reserva" name="fechaR" value="">
+                <small class="text-danger fst-italic"></small>
+            </div>
                 <div class="calendar-days" id="calendar-days"></div>
                 <button class="reserve-btn" onclick="location.href='{{ url('reservahotel') }}'">Reservar</button>
                 <p class="cancel-policy">Políticas de cancelación</p>
