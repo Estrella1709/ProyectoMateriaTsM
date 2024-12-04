@@ -1,0 +1,224 @@
+
+.content {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+
+
+.left-panel, .right-panel {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100vh; 
+}
+
+.left-panel {
+    flex: 2;
+    margin-right: 10px;
+    overflow-y: auto;
+}
+
+.right-panel {
+    flex: 2;
+    margin-left: 10px;
+   
+}
+
+/* Estilos para el contenedor de 'Próximas citas' y los botones de filtrado */
+.prox-citas-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.prox-citas {
+    margin: 0;
+    color: #00153c;
+}
+
+
+.appointment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-item:hover {
+    background-color: #b2dfe6;
+}
+
+
+
+.appointment-info p {
+    margin: 0;
+    font-weight: bold;
+    color: #001c26;
+}
+
+.appointment-info span {
+    color: #757575;
+    font-size: 14px;
+}
+
+
+.detalles-pacientes {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 20px; /* Ajusta el padding según sea necesario */
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Necesario para posicionar los botones en la parte inferior derecha */
+}
+
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    position: relative; /* Necesario para posicionar la imagen en la parte superior derecha */
+}
+
+.details-info {
+    margin-right: 120px; /* Ajusta el margen derecho para dar espacio a la imagen del perfil */
+}
+
+.profile-picture {
+    position: absolute;
+    top: 20px; /* Ajusta la distancia desde la parte superior del contenedor */
+    right: 20px; /* Ajusta la distancia desde el borde derecho del contenedor */
+    margin-left: 0; /* Asegúrate de que no haya margen izquierdo */
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    object-fit: cover;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una sombra ligera si es necesario */
+}
+
+.container-cita{
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.container-cita {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+.container-cita label {
+    display: block; /* Asegura que las etiquetas estén en su propia línea */
+    margin-bottom: 10px; /* Espaciado entre etiquetas y campos de entrada */
+    font-weight: bold; /* Texto en negrita */
+    color: #00062a; /* Color de texto acorde a la paleta */
+}
+
+.container-cita input[type="text"] {
+    width: 100%; /* Abarca el ancho completo del contenedor */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #333; /* Color del texto */
+}
+
+button {
+    background-color: #004f9e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0360bc;
+}
+
+form input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-shadow: inset 0 4px 7px rgba(0, 0, 0, 0.1);
+}
+
+form input:hover{
+    border: 1px solid #398F9D;
+}
+form input:focus {
+    border-color: #398F9D;
+    outline: none;
+}
+
+.user-type {
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 5px 3;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.user-type h4 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #398F9D;
+    font-weight: bold;
+}
+
+.user-type select {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555555;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.user-type select:hover {
+    border-color: #398F9D;
+}
+
+.user-type select:focus {
+    border-color: #398F9D;
+    outline: none;
+}
