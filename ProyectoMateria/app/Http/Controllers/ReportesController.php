@@ -51,7 +51,7 @@ class ReportesController extends Controller
         $reporte->contenido_reporte = $validated['contenido_reporte'];
         $reporte->save();
 
-        return redirect()->back()->with('exito', 'Reporte generado exitosamente');
+        return redirect()->route('reportes.index')->with('exito', 'Reporte creado exitosamente');
     }
 
     public function update(Request $request, Reporte $reporte)
@@ -64,7 +64,8 @@ class ReportesController extends Controller
         ]);
 
         $reporte->update($validated);
-        return redirect()->route('reportes.index')->with('success', 'Reporte actualizado exitosamente');
+        return redirect()->route('reportes.index')
+            ->with('success', 'Reporte actualizado exitosamente');
     }
 
     public function destroy(Reporte $reporte)

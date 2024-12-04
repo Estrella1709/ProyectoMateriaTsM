@@ -38,7 +38,7 @@
         <div>
             <p>Título: <x-input-text placeholder="Título del reporte" nombre="titulo_reporte" /></p>
         </div>
-        <h3>Contenido del Reporte</h3>
+        <h3>Descripcion del Reporte</h3>
         <x-textarea nombre="contenido_reporte" placeholder="Ingrese el contenido detallado del reporte..." />
         <small class="text-danger">{{$errors->first('contenido_reporte')}}</small>
         <div class="buttons">
@@ -51,13 +51,13 @@
 <br>
 
 <script>
-    @if(session('exito'))
-        Swal.fire({
-            icon: 'success',
-            title: '¡Éxito!',
-            text: '{{ session('exito') }}',
-            timer: 3000
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            form.submit();
+            window.location.href = "{{ route('reportes.index') }}";
         });
-    @endif
+    });
 </script>
 @endsection
