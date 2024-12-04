@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('remember_token', 100)->nullable();
             $table->dateTime('email_verified_at')->nullable();
-            $table->boolean('two_factor_authentication')->nullable();
+            $table->integer('two_factor_code')->nullable();
             $table->timestamps();
         
             $table->foreign('id_rol')->references('id_rol')->on('roles');

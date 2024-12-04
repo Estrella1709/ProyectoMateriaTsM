@@ -3,7 +3,6 @@
 @section('contenido')
 <div class="container form-container">
     <h2>Editar Vuelo</h2>
-    {{-- At the top of create.blade.php and edit.blade.php --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -17,7 +16,6 @@
         @csrf
         @method('PUT')
         
-        {{-- For each form field, add error display --}}
         <div class="form-group">
             <label>Aerolínea</label>
             <select name="id_aerolinea" class="form-control @error('id_aerolinea') is-invalid @enderror" required>
@@ -71,12 +69,26 @@
 
         <div class="form-group">
             <label>Horario Salida</label>
-            <input type="time" name="horario_salida" class="form-control" value="{{ $vuelo->horario_salida }}" required>
+            <input type="time" 
+                   name="horario_salida" 
+                   class="form-control @error('horario_salida') is-invalid @enderror" 
+                   value="{{ old('horario_salida', \Carbon\Carbon::parse($vuelo->horario_salida)->format('H:i')) }}" 
+                   required>
+            @error('horario_salida')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label>Horario Llegada</label>
-            <input type="time" name="horario_llegada" class="form-control" value="{{ $vuelo->horario_llegada }}" required>
+            <input type="time" 
+                   name="horario_llegada" 
+                   class="form-control @error('horario_llegada') is-invalid @enderror" 
+                   value="{{ old('horario_llegada', \Carbon\Carbon::parse($vuelo->horario_llegada)->format('H:i')) }}" 
+                   required>
+            @error('horario_llegada')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">

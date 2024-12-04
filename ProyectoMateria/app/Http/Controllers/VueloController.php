@@ -72,26 +72,10 @@ class VueloController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(VueloRequest $request)
     {
-        $request->validate([
-            'id_origen' => 'required',
-            'id_destino' => 'required',
-            'id_aerolinea' => 'required',
-            'fecha_salida' => 'required|date',
-            'fecha_regreso' => 'nullable|date',
-            'horario_salida' => 'required',
-            'horario_llegada' => 'required',
-            'capacidad' => 'required|integer',
-            'pasajeros' => 'required|integer',
-            'precio' => 'required|numeric',
-            'escalas' => 'nullable|string',
-            'disponibilidad_asientos' => 'required|integer',
-        ]);
-
         Vuelo::create($request->validated());
-
-        return redirect()->route('vuelos.index')->with('success', 'Vuelo creado exitosamente.');
+        return redirect()->route('vuelos.admin')->with('success', 'Vuelo creado exitosamente.');
     }
 
     /**
@@ -119,24 +103,8 @@ class VueloController extends Controller
      */
     public function update(VueloRequest $request, Vuelo $vuelo)
     {
-        $request->validate([
-            'id_origen' => 'required',
-            'id_destino' => 'required',
-            'id_aerolinea' => 'required',
-            'fecha_salida' => 'required|date',
-            'fecha_regreso' => 'nullable|date',
-            'horario_salida' => 'required',
-            'horario_llegada' => 'required',
-            'capacidad' => 'required|integer',
-            'pasajeros' => 'required|integer',
-            'precio' => 'required|numeric',
-            'escalas' => 'nullable|string',
-            'disponibilidad_asientos' => 'required|integer',
-        ]);
-
         $vuelo->update($request->validated());
-
-        return redirect()->route('vuelos.index')->with('success', 'Vuelo actualizado exitosamente.');
+        return redirect()->route('vuelos.admin')->with('success', 'Vuelo actualizado exitosamente.');
     }
 
     /**

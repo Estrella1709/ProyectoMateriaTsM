@@ -156,4 +156,5 @@ class HotelController extends Controller
         session()->flash('eliminado', 'Se elimino '.$nombre);
         return redirect()->back();
     }
+    
 }
