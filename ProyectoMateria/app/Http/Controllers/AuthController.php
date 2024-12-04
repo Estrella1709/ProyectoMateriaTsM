@@ -78,7 +78,11 @@ class AuthController extends Controller
 
         if ($user->two_factor_code == $request->code) {
             session(['two_factor_athenticated' => true]);
-            return redirect()->intended('/vuelos');
+            if ($user->id_rol == 1) {
+                return redirect()->intended('/vuelos');
+            } elseif ($user->id_rol == 2) {
+                return redirect()->intended('/CRUDhoteles');
+            }
         }
 
         return redirect()->route('two-factor.index')->withErrors(['code' => 'El código esta incorrecto']);

@@ -118,7 +118,9 @@
                         <button type="submit" class="pay-button">Pagar</button>
                     </form>
                     <p class="cancel-policy">Políticas de cancelación</p>
-                    <p class="policy-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    @foreach($politicas as $politica)
+                    <p class="policy-description">{{ $politica->descripcion }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>

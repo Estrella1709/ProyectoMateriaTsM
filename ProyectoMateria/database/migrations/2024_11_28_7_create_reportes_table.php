@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('reportes', function (Blueprint $table) {
             $table->id('id_reporte');
             $table->unsignedBigInteger('id_usuario');
-            $table->dateTime('fecha_generacion');
-            $table->string('tipo_reporte', 50);
+            $table->enum('tipo_reporte', ['vuelos', 'hoteles', 'clientes']);
+            $table->enum('estado_reporte', ['pendiente', 'resuelto']);
+            $table->string('titulo_reporte');
             $table->text('contenido_reporte');
             $table->timestamps();
-        
-            $table->foreign('id_usuario')->references('id_usuarios')->on('usuarios');
+            
+            $table->foreign('id_usuario')->references('id_usuarios')->on('usuarios')->onDelete('cascade');
         });
+
         
     }
 

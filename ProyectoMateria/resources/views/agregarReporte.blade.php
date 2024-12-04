@@ -14,21 +14,25 @@
     <form method="POST" action="/envAgrRep">
         @csrf
         <div>
-            <p>Cliente: <x-input-text placeholder="Nombre cliente" nombre="nombre_c" /></p>
-            <p>Aerolínea: <x-input-text placeholder="Nombre aerolínea" nombre="nombre_aero" /></p>
-            <p>Destino: <x-input-text placeholder="Destino" nombre="destino" /></p>
+            <p>
+                Tipo de Reporte:
+                <select name="tipo_reporte" class="form-select">
+                    <option value="vuelos">Vuelos</option>
+                    <option value="hoteles">Hoteles</option>
+                    <option value="clientes">Clientes</option>
+                </select>
+            </p>
+            <p>Título: <x-input-text placeholder="Título del reporte" nombre="titulo_reporte" /></p>
         </div>
-        <h3>Información Financiera</h3>
-        <x-textarea nombre="txtAR" placeholder="esto es una prueba me quiero matar jajaja X3 lololollo" />
-        <small>{{$errors->first('txtAR')}}</small>
+        <h3>Contenido del Reporte</h3>
+        <x-textarea nombre="contenido_reporte" placeholder="Ingrese el contenido detallado del reporte..." />
+        <small class="text-danger">{{$errors->first('contenido_reporte')}}</small>
         <div class="buttons">
-            <button type="submit" class="button edit-btn">Agregar</button>
+            <button type="submit" class="button edit-btn">Generar Reporte</button>
         </div>
     </form>
 </div>
 <br>
 <br>
-
-
 
 @endsection

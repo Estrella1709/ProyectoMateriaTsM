@@ -45,6 +45,7 @@ class UsuarioController extends Controller
         $addUsuario->password=bcrypt($request->input('pwdRegistro'));
 
         $addUsuario->save();
+        Auth::login($addUsuario);
         event(new Registered($addUsuario));
 
         session()->flash('exito', 'Excelente!, estamos a unos pasos de completar tu registro, ' . $request->input('nombreRegistro'));

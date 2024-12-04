@@ -39,7 +39,9 @@
                 <div class="calendar-days" id="calendar-days"></div>
                 <button type="button" id="reserveBtn" class="reserve-btn">Reservar</button>
                 <p class="cancel-policy">Políticas de cancelación</p>
-                <p class="policy-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                @foreach($politicas as $politica)
+                <p class="policy-description">{{ $politica->descripcion }}</p>
+                @endforeach
             </form>
         </div>
     </div>
