@@ -212,7 +212,7 @@
                                     <p class="card-text text-dark">Precio: ${{ number_format($vuelo->precio, 2) }}</p>
                                     <p class="card-text text-dark">Escalas: {{ $vuelo->escalas }}</p>
                                     <p class="card-text text-dark">Disponibilidad de Asientos: {{ $vuelo->disponibilidad_asientos }}</p>
-                                    <a href="" class="btn btn-primary">Detalles</a>
+                                    <a href="{{ route('vuelos.detalles', $vuelo->id_vuelo) }}" class="btn btn-primary">Detalles</a>
                                 </div>
                             </div>
                         </div>

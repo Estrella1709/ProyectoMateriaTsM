@@ -107,6 +107,14 @@ class controladorVistas extends Controller
         return view('editarReservaH');
     }
 
+    public function preReserva(){
+        return view('prereserva');
+    }
+
+    public function Reserva(){
+        return view('reservas');
+    }
+
     //Inicio de funciones para validaciones 
     public function procesarLogin(validarLogin $peticion){
         session()->flash('exito', 'Se ha iniciado sesión correctamente');

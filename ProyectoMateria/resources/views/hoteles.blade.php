@@ -113,7 +113,7 @@
                                         @if($hotel->piscina) 🏊 @endif
                                         @if($hotel->desayuno) 🍽️ @endif
                                     </div>
-                                    <a href="#" class="btn btn-primary mt-2">Detalles</a>
+                                    <a href="{{ route('detalleshotel', $hotel->id_hotel) }}" class="btn btn-primary mt-2">Detalles</a>
                                 </div>
                             </div>
                         </div>
