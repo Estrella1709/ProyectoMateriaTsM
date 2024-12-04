@@ -8,6 +8,7 @@ use App\Http\Controllers\VueloController;
 use App\Http\Controllers\ReservasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
+use App\Http\Controllers\PoliticasController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,9 @@ Route::get('/detallesreportes', [controladorVistas::class, 'detallesreportes'])-
 Route::get('/agregarReporte', [controladorVistas::class, 'agregarReporte'])->name('rutaAgregarReporte');
 Route::get('/notificaciones', [controladorVistas::class, 'notificaciones'])->name('rutaNotificaciones');
 Route::get('/editarnoti', [controladorVistas::class, 'editarnoti'])->name('rutaEditarNoti');
-Route::get('/politicas', [controladorVistas::class, 'politicas'])->name('rutaPoliticas');
-Route::get('/editarpoliticas', [controladorVistas::class, 'editarpoliticas'])->name('rutaEditarPoliticas');
+Route::get('/politicas', [PoliticasController::class, 'index'])->name('rutaPoliticas');
+Route::get('/editarpoliticas/{id}', [PoliticasController::class, 'edit'])->name('rutaEditarPolitica');
+Route::put('/editarpoliticas/{id}', [PoliticasController::class, 'update'])->name('rutaActualizarPolitica');
 Route::get('/editarUsuarios', [controladorVistas::class, 'editarUsuarios'])->name('rutaEditarUsuarios');
 Route::get('/editarReservaH', [controladorVistas::class, 'editarReservaH'])->name('rutaEditarReservaH');
 Route::get('/CRUDvuelos', [VueloController::class, 'adminIndex'])->name('vuelos.admin');
