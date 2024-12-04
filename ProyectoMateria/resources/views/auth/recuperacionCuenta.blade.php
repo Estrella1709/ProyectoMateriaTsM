@@ -15,7 +15,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
-            background-image: url('img/inicioSesion1.jpg');
+            background: linear-gradient(to bottom, #3c88bc, #a1c4e0);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -42,12 +42,11 @@
             <x-input-text placeholder="Escribe tu correo" nombre="email" />
             <x-input-text placeholder="Nueva Contraseña" nombre="password" />
             <x-input-text placeholder="Confirmar Contraseña" nombre="password_confirmation" />
-            <a href="">Reenviar código</a>
             <input type="hidden" name="token" value="{{$token}}">
             <br>
             <br>
             <div class="btn-container">
-                <button type="submit">Ingresar</button>
+                <button type="submit">Restablecer Contraseña</button>
             </div>
         </form>
     </div>

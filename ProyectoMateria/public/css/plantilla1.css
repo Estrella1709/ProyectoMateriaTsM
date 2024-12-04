@@ -94,6 +94,24 @@ header a::before{
 }
 /*Aqui termina header*/
 
+.btn-logout {
+    background-color: white; /* Color de fondo del botón */
+    color: black; /* Color del texto */
+    border: 1px solid #ccc; /* Borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    display: inline-block; /* Asegura que el botón esté en línea con otros elementos */
+    text-align: center; /* Centra el texto */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s; /* Transición suave para el efecto hover */
+}
+
+.btn-logout:hover {
+    background-color: #343a40; /* Color de fondo al pasar el mouse */
+    color: white; /* Cambia el color del texto al pasar el mouse */
+}
+
 
 
 

@@ -13,13 +13,19 @@
 @endsession
 
 <link rel="stylesheet" href="{{ asset('css/CRUDhoteles.css') }}">
+<link rel="stylesheet" href="{{ asset('css/CRUDvuelos.css') }}">
 <br>
 <br>
 <br>
-<div class="">
-    <div class="table-container">
+<div class="crud-container">
+    <div class="header-section">
         <h2>Hoteles</h2>
-        <table>
+        <a href="{{ route('hoteles.create') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Agregar Hotel
+            </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table custom-table">
             <thead>
                 <tr>
                     <th>Nombre Hotel</th>
@@ -56,11 +62,6 @@
                 <!-- Agrega más filas según sea necesario -->
             </tbody>
         </table>
-    </div>
-    <!-- Contenedor de botones y opciones -->
-    <div class="options-container">
-        <button type="button" class="pay-button" onclick="window.location.href='{{ route('hoteles.create') }}'">Agregar
-            Hotel</button>
     </div>
 </div>
 <br>
