@@ -22,7 +22,9 @@
         </form>
 
         <p class="cancel-policy">Políticas de cancelación</p>
-        <p class="policy-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        @foreach($politicas as $politica)
+        <p class="policy-description">{{ $politica->descripcion }}</p>
+        @endforeach
     </div>
 
 </div>
