@@ -16,7 +16,7 @@ Route::get('/recuperacionCuenta', [controladorVistas::class, 'recuperacionCuenta
 Route::get('/hoteles', [controladorVistas::class, 'hoteles'])->name('rutaHoteles');
 Route::get('/detalleshotel', [controladorVistas::class, 'detalleshotel'])->name('rutaDetallesHotel');
 Route::get('/reservahotel', [controladorVistas::class, 'reservahotel'])->name('rutaReservaHotel');
-Route::get('/vuelos', [controladorVistas::class, 'vuelos'])->middleware('verified')->name('rutaVuelos');
+Route::get('/vuelos', [controladorVistas::class, 'vuelos'])->middleware('auth')->name('rutaVuelos');
 Route::get('/detallesvuelo', [controladorVistas::class, 'detallesvuelo'])->name('rutaDetallesVuelo');
 Route::get('/reservavuelo', [controladorVistas::class, 'reservavuelo'])->name('rutaReservavuelo');
 Route::get('/CRUDusuarios', [controladorVistas::class, 'CRUDusuarios'])->name('rutaCRUDusuarios');
@@ -48,6 +48,14 @@ Route::post('/envAgrRep', [controladorVistas::class, 'procAgrRep'])->name('envAg
 //Rutas de usuarios
 Route::resource('usuario', UsuarioController::class);
 Route::post('/envLogin', [AuthController::class, 'login'])->name('envLogin');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::middleware('auth')->group(function(){
+    Route::get('/two-factor', [AuthController::class, 'index'])->name('two-factor.index');
+    Route::post('/two-factor', [AuthController::class, 'verify'])->name('two-factor.verify'); 
+});
+
 
 //Resource type routes
 Route::resource('vuelos', VueloController::class);

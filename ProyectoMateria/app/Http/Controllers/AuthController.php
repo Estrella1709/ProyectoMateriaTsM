@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\validarLogin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -16,94 +17,91 @@ use App\Models\usuario;
 
 class AuthController extends Controller
 {
-    public function login(validarLogin $request){
-        
+    public function login(validarLogin $request)
+    {
+
         $user = DB::table('usuarios')->where('email', $request->input('correoLogin'))->first();
         $credentials = [
-            'email' => $request->input('correoLogin'), 
+            'email' => $request->input('correoLogin'),
             'password' => $request->input('pwdLogin')
         ];
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            session()->flash('exito', 'Bienvenido: '. $user->nombre);
-            if ($user->id_rol==1) {
-                return redirect()->route('hoteles.index');
-            } elseif ($user->id_rol==2) {
-                return redirect()->route('rutaPoliticas');
-            }
+            session()->flash('exito', 'Bienvenido: ' . $user->nombre);
+
+            return redirect()->route('two-factor.index');
         }
- 
+
         return back()->withErrors([
             'correoLogin' => 'The provided credentials do not match our records.',
         ])->onlyInput('correoLogin');
+    }
 
-
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
     public function index()
     {
-        //
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('login')->withErrors(['error' => 'Debes iniciar sesión primero.']);
+        }
+
+        $code = rand(100000, 999999);
+        $user->two_factor_code = $code;
+        $user->save();
+
+        Mail::raw("Tu codigo de uso único es " . $code, function ($message) use ($user) {
+            $message->to($user->email)->subject('Código de inicio de sesión');
+        });
+
+        return view('auth.two-factor');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function verify(Request $request)
     {
-        //
+        $request->validate([
+            'code' => 'required|integer | digits:6 ',
+        ]);
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('login')->withErrors(['error' => 'Debes iniciar sesión primero.']);
+        }
+
+        if ($user->two_factor_code == $request->code) {
+            session(['two_factor_athenticated' => true]);
+            return redirect()->intended('/vuelos');
+        }
+
+        return redirect()->route('two-factor.index')->withErrors(['code' => 'El código esta incorrecto']);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    //Funciones para la verificacion por correo del usuario
+    public function verifyNotice()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-
-    public function verifyNotice() {
         return view('validacionRegistro');
     }
 
-    public function verifyEmail(EmailVerificationRequest $request) {
+    public function verifyEmail(EmailVerificationRequest $request)
+    {
         $request->fulfill();
-     
-        return redirect()->route('rutaVuelos');
+
+        return redirect('/hoteles');
     }
 
-    public function verifyHandler(Request $request) {
+    public function verifyHandler(Request $request)
+    {
         $request->user()->sendEmailVerificationNotification();
-     
-        return to_route('validacionRegistro')->with('message', 'Verification link sent!');
+
+        return back()->with('message', 'Link de verificación enviado');
     }
 }

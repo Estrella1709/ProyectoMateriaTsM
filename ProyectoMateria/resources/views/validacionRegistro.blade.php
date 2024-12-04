@@ -28,22 +28,24 @@
     <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
     @endif
 
+@if(session('message'))
+    <x-alert title="Respuesta del servidor" text="{{ session('message') }}"></x-alert>
+@endif
+
     <div class="container">
         <div class="header">
             <img src="{{asset('img/Logo.png')}}" alt="Logo"> 
             <h1>Turista sin Maps</h1>
         </div>
-        <form method="" action="{{route('rutaInicioSesion')}}">
+        <form method="POST" action="{{route('verification.send')}}">
         @csrf
             <h3>Registro</h3>   
             <br>
-            <p>Se te enviará al correo que ingresaste un código de confirmación para validar tu registro</p>
-            <x-input-text placeholder="Código" nombre="codigo"/>
-            <a href="{{''}}">Reenviar código</a>
+            <p>Se te enviará un correo para validar tu registro</p>
             <br>
             <br>
             <div class="btn-container">
-                <button type="submit">Finalizar</button>
+                <button type="submit">Reenviar Código</button>
             </div>
         </form>
     </div>
