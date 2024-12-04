@@ -50,17 +50,32 @@ class PoliticasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id) 
     {
-        //
+        $politica = DB::table('politicas')->where('id_politica', $id)->first();
+
+        if (!$politica) {
+            abort(404, 'Política no encontrada');
+        }
+
+        return view('editarpoliticas', compact('politica'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'txtpoliticas' => 'required', 
+        ]);
+    
+        DB::table('politicas')
+            ->where('id_politica', 1)
+            ->update(['descripcion' => $request->input('txtpoliticas')]);
+    
+        return redirect()->route('rutaPoliticas')->with('exito', 'La política ha sido actualizada correctamente.');
     }
 
     /**

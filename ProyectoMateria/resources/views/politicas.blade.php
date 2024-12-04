@@ -13,7 +13,9 @@
     <h3>Políticas de cancelación</h3>
     <p>{{ $politica->descripcion }}</p>
     <div class="buttons">
-        <button class="button edit-btn" onclick="window.location.href='{{ url('editarpoliticas') }}'">Editar</button>
+        <a href="{{ route('rutaEditarPolitica', ['id' => $politica->id_politica]) }}">
+            <button class="button edit-btn">Editar</button>
+        </a>
     </div>
 </div>
 @endforeach
