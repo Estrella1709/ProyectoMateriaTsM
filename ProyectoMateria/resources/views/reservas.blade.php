@@ -57,7 +57,7 @@
 
                 Swal.fire({
                     title: '<span style="color:#398F9D;">¿Estás segur@ de que quieres cancelar la reserva?</span>',
-                    html: `<p style="font-size: 18px; color: #398F9D;">Esta opción no se puede revertir! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, ex! Ab delectus placeat blanditiis. Ipsa ipsam temporibus neque molestias libero fugit at consectetur quam. Ratione commodi molestias laudantium cupiditate magni. </p>`,
+                    html: `@foreach($politicas as $politica)<p style="font-size: 18px; color: #398F9D;">Esta opción no se puede revertir! Políticas: {{ $politica->descripcion }}</p>@endforeach`,
                     imageUrl: '{{ asset('img/logo.png') }}',
                     imageWidth: 150,
                     imageHeight: 150,

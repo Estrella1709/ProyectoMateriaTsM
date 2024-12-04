@@ -13,21 +13,26 @@ use App\Http\Requests\validarResVyH;
 
 class ReservasController extends Controller
 {
+
     public function mostrarDetalles(string $id){
+
+        $politicas = DB::table('politicas')->get();
 
         $hotel = Hotel::findOrFail($id);
 
         // Retornar la vista con los detalles del hotel
-        return view('detalleshotel', compact('hotel'));
+        return view('detalleshotel', ['politicas' => $politicas], compact('hotel'));
     }
 
     public function detalles($id)
     {
+
+        $politicas = DB::table('politicas')->get();
         // Buscar el vuelo por su ID
         $vuelo = Vuelo::findOrFail($id);
 
         // Pasar el vuelo a la vista detalles
-        return view('detallesvuelo', compact('vuelo'));
+        return view('detallesvuelo',['politicas' => $politicas], compact('vuelo'));
     }
 
     public function crearReservacion(validadorDH $request, $id_hotel)
@@ -60,7 +65,7 @@ class ReservasController extends Controller
     public function crearReservacionVuelo(Request $request, $id_vuelo)
     {
         
-
+ 
         // Obtener el vuelo correspondiente
         $vuelo = Vuelo::findOrFail($id_vuelo);
 
@@ -89,6 +94,8 @@ class ReservasController extends Controller
 
     public function mostrarPreReservas()
 {
+
+    $politicas = DB::table('politicas')->get();
     // Obtener el estado 'pre-reserva' (suponiendo que el estado 'pre-reserva' tiene el id 2)
     $estadoPreReserva = Estado::where('tipo', 'prereservado')->first();
 
@@ -132,7 +139,7 @@ class ReservasController extends Controller
     }
 
     // Pasar los datos a la vista
-    return view('prereserva', compact('reservacionesHoteles', 'reservacionesVuelos', 'serviciosReservados', 'fechasReservas', 'totalPagar'));
+    return view('prereserva', ['politicas' => $politicas], compact('reservacionesHoteles', 'reservacionesVuelos', 'serviciosReservados', 'fechasReservas', 'totalPagar'));
 }
 
 
@@ -179,6 +186,7 @@ class ReservasController extends Controller
 
     public function mostrarReservasR()
     {
+        $politicas = DB::table('politicas')->get();
         // Obtener el estado "reservado"
         $estadoReservado = Estado::where('tipo', 'reservado')->first();
 
@@ -186,7 +194,7 @@ class ReservasController extends Controller
         $reservaciones = Reservacion::where('id_estado', $estadoReservado->id_estado)->get();
 
         // Pasar las reservaciones a la vista
-        return view('reservas', compact('reservaciones'));
+        return view('reservas',['politicas' => $politicas], compact('reservaciones'));
     }
 
 
