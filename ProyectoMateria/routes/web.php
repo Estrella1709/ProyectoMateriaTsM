@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VueloController;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +10,7 @@ use App\Http\Controllers\controladorVistas;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
-Route::get('/', [controladorVistas::class, 'inicioSesion'])->name('rutaInicioSesion');
+Route::get('/', [controladorVistas::class, 'inicioSesion'])->name('login');
 Route::get('/validacionRegistro', [controladorVistas::class, 'validacionRegistro'])->name('rutaValidacionRegistro');
 Route::get('/recuperacionCuenta', [controladorVistas::class, 'recuperacionCuenta'])->name('rutaRecuperacionCuenta');
 Route::get('/hoteles', [controladorVistas::class, 'hoteles'])->name('rutaHoteles');
@@ -67,3 +68,24 @@ Route::middleware('auth')->group(function(){
     Route::post('/email/verification-notification', [AuthController::class, 'verifyHandler'])
     ->middleware('throttle:6,1')->name('verification.send');
 });
+
+//Rutas por si el usuario olvido su contraseña
+//Esto poner las rutas en un grupo
+Route::middleware('guest')->group(
+    function() {
+
+        //Ruta que muestra la vista para escribir el correo
+        Route::get('/forgot-password', function () {
+            return view('auth.forgot-password');
+        })->name('password.request');
+
+        //Ruta de tipo handler para mandar el correo 
+        Route::post('/forgot-password', [ResetPassword::class, 'passwordEmail' ])->name('password.email');
+
+        //Ruta para que el usuario vea la segunda vista de confirmacion del correo, debe incluir el ken que esta en la funcion en resetpassword controller
+        Route::get('/reset-password/{token}', [ResetPassword::class, 'passwordReset'])->name('password.reset');
+
+        Route::post('/reset-password', [ResetPassword::class, 'passwordUpdate'])->name('password.update');
+    }
+);
+

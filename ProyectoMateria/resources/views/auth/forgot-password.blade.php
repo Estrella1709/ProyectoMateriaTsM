@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <title>Inicio Sesión - Turista sin Maps</title>
     <style>
         body {
@@ -19,46 +21,36 @@
             background-repeat: no-repeat;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="{{ asset('css/inicioSesion.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/recuperacionCuenta.css') }}">
 </head>
 
 <body>
+    
+@if(session('exito'))
+    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
+    @endif
 @session('status')
     <x-alert title="Respuesta del servidor" text="{{ session('status') }}"></x-alert>
 @endsession
+    
     <div class="container">
         <div class="header">
             <img src="{{asset('img/Logo.png')}}" alt="Logo">
             <h1>Turista sin Maps</h1>
         </div>
-
-        @if(session('exito'))
-    <x-alert title="Respuesta del servidor" text="{{ session('exito') }}"></x-alert>
-    @endif
-
-        <form method="POST" action="{{route('envLogin')}}">
+        <form method="POST" action="{{route('password.email')}}">
             @csrf
-            <h3>Inicio de Sesión</h3>
-
-            <x-input-text placeholder="Correo Electrónico" nombre="correoLogin" />
-
-            <div class="form-group">
-                <input type="password" class="custom-input" placeholder="Contraseña" name="pwdLogin">
-                <small class="text-danger fst-italic"> {{$errors->first('pwdLogin')}}</small>
-            </div>
-
-            <a href="{{route('password.request')}}">¿Olvidaste tu contraseña?</a>
-            <br>
-            <a href="{{route('usuario.create')}}">Registrarse</a>
+            <h3>Recuperacion de Cuenta</h3>
+            <x-input-text placeholder="Escribe tu correo" nombre="email" />
+            <a href="">Reenviar código</a>
             <br>
             <br>
             <div class="btn-container">
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit">Enviar correo</button>
             </div>
         </form>
-
-        
+    </div>
     </div>
 </body>
 

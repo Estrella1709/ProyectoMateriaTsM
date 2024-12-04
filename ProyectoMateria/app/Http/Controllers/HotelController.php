@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use App\Models\Ubicacion;
+uSE App\Http\Requests\validarAgregarHotel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -73,7 +74,7 @@ class HotelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(validarAgregarHotel $request)
     {
         $addHotel=new Hotel();
 
@@ -120,7 +121,7 @@ class HotelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id_hotel)
+    public function update(validarAgregarHotel $request, $id_hotel)
     {
         $update_hotel=Hotel::find( $id_hotel);
 
