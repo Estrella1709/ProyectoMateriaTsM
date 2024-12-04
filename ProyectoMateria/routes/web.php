@@ -28,10 +28,8 @@ Route::get('/agregarReporte', [controladorVistas::class, 'agregarReporte'])->nam
 Route::get('/notificaciones', [controladorVistas::class, 'notificaciones'])->name('rutaNotificaciones');
 Route::get('/editarnoti', [controladorVistas::class, 'editarnoti'])->name('rutaEditarNoti');
 Route::get('/politicas', [PoliticasController::class, 'index'])->name('rutaPoliticas');
-
 Route::get('/editarpoliticas/{id}', [PoliticasController::class, 'edit'])->name('rutaEditarPolitica');
 Route::put('/editarpoliticas/{id}', [PoliticasController::class, 'update'])->name('rutaActualizarPolitica');
-
 Route::get('/editarUsuarios', [controladorVistas::class, 'editarUsuarios'])->name('rutaEditarUsuarios');
 Route::get('/editarReservaH', [controladorVistas::class, 'editarReservaH'])->name('rutaEditarReservaH');
 Route::get('/CRUDvuelos', [VueloController::class, 'adminIndex'])->name('vuelos.admin');
