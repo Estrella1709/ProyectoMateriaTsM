@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="{{ asset('css/politicas.css') }}">
 @foreach($politicas as $politica)
 <div class="info-card">
+
     <h3>Políticas de cancelación</h3>
     <p>{{ $politica->descripcion }}</p>
     <div class="buttons">
@@ -19,5 +20,6 @@
     </div>
 </div>
 @endforeach
+
 <br><br>
 @endsection

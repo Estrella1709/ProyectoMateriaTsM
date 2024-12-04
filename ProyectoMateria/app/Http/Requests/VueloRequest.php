@@ -27,7 +27,7 @@ class VueloRequest extends FormRequest
             'id_aerolinea' => 'required|exists:aerolineas,id_aerolinea',
             'fecha_salida' => 'required|date|after_or_equal:today',
             'fecha_regreso' => 'nullable|date|after_or_equal:fecha_salida',
-            'horario_salida' => 'required|date_format:H:i',
+            'horario_salida' => 'required|date_format:H:i',  // 24-hour format
             'horario_llegada' => 'required|date_format:H:i|after:horario_salida',
             'capacidad' => 'required|integer|min:1|max:1000',
             'pasajeros' => 'required|integer|min:0|lte:capacidad',

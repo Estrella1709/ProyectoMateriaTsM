@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             VueloSeeder::class,
             HotelesSeeder::class,
             politicasSeeder::class,
+            EstadoSeeder::class
         ]);
     }
 }    

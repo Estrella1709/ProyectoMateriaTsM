@@ -15,7 +15,7 @@
         <section>
             <a href="{{'CRUDusuarios'}}"><h2 id="vuelos">Usuarios</h2></a>
             <a href="{{route('rutaCRUDhoteles')}}"><h2 id="hoteles">Hoteles</h2></a>
-            <a href="{{'CRUDvuelos'}}"><h2 id="vuelos">Vuelos</h2></a>
+            <a href="{{ route('vuelos.admin') }}"><h2 id="vuelos">Vuelos</h2></a>
             <a href="{{'CRUDreportes'}}"><h2 id="vuelos">Reportes</h2></a>
             <a href="{{'notificaciones'}}"><h2 id="vuelos">Notificaciones</h2></a>
             <a href="{{'politicas'}}"><h2 id="vuelos">Políticas</h2></a>

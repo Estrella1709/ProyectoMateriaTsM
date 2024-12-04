@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('reservaciones', function (Blueprint $table) {
             $table->id('id_reservacion');
-            $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_vuelo')->nullable();
             $table->unsignedBigInteger('id_hotel')->nullable();
+            $table->unsignedBigInteger('id_estado')->nullable();
             $table->dateTime('fecha_reservacion');
             $table->decimal('total_a_pagar', 10, 2);
             $table->timestamps();
-        
-            $table->foreign('id_usuario')->references('id_usuarios')->on('usuarios');
+            
             $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos');
             $table->foreign('id_hotel')->references('id_hotel')->on('hoteles');
+            $table->foreign('id_estado')->references('id_estado')->on('estado');
         });
         
     }
