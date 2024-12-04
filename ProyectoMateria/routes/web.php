@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\UsuarioController;
@@ -25,7 +26,7 @@ Route::get('/CRUDusuarios', [controladorVistas::class, 'CRUDusuarios'])->name('r
 Route::get('/CRUDhoteles', [HotelController::class, 'CRUDhoteles'])->name('rutaCRUDhoteles');
 Route::get('/CRUDreportes', [controladorVistas::class, 'CRUDreportes'])->name('rutaCRUDreportes');
 Route::get('/detallesreportes', [controladorVistas::class, 'detallesreportes'])->name('rutaDetallesReportes');
-Route::get('/agregarReporte', [controladorVistas::class, 'agregarReporte'])->name('rutaAgregarReporte');
+Route::get('/agregarReporte', [ReportesController::class, 'create'])->name('reportes.create');
 Route::get('/notificaciones', [controladorVistas::class, 'notificaciones'])->name('rutaNotificaciones');
 Route::get('/editarnoti', [controladorVistas::class, 'editarnoti'])->name('rutaEditarNoti');
 Route::get('/politicas', [PoliticasController::class, 'index'])->name('rutaPoliticas');
@@ -45,7 +46,7 @@ Route::post('/envEditPoli', [controladorVistas::class, 'procEditPoli'])->name('e
 Route::post('/envEditNoti', [controladorVistas::class, 'procEditNoti'])->name('envEditNoti');
 Route::post('/envReservaH', [controladorVistas::class, 'procReservaH'])->name('envReservaH');
 Route::post('/envReservaV', [controladorVistas::class, 'procReservaV'])->name('envReservaV');
-Route::post('/envAgrRep', [controladorVistas::class, 'procAgrRep'])->name('envAgrRep');
+Route::post('/envAgrRep', [ReportesController::class, 'store'])->name('reportes.store');
 
 
 //Rutas de usuarios
