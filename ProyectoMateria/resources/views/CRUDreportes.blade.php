@@ -39,10 +39,6 @@
                             </span>
                         </td>
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('reportes.show', $reporte->id_reporte) }}" class="btn btn-sm btn-info">
-                                    <i class="fas fa-eye"></i> Ver Detalles
-                                </a>
                                 <button class="btn btn-sm btn-primary" 
                                         onclick="window.location.href='{{ route('reportes.edit', $reporte->id_reporte) }}'">
                                     <i class="fas fa-edit"></i> Editar
