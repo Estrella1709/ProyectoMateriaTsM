@@ -36,13 +36,14 @@
             <img src="{{asset('img/Logo.png')}}" alt="Logo">
             <h1>Turista sin Maps</h1>
         </div>
-        <form method="POST" action="/envNuevapwd">
+        <form method="POST" action="{{route('password.update')}}">
             @csrf
             <h3>Recuperacion de Cuenta</h3>
-            <x-input-text placeholder="Código" nombre="codigo" />
-            <x-input-text placeholder="Nueva Contraseña" nombre="pwdnueva" />
-            <x-input-text placeholder="Confirmar Contraseña" nombre="confnueva" />
+            <x-input-text placeholder="Escribe tu correo" nombre="email" />
+            <x-input-text placeholder="Nueva Contraseña" nombre="password" />
+            <x-input-text placeholder="Confirmar Contraseña" nombre="password_confirmation" />
             <a href="">Reenviar código</a>
+            <input type="hidden" name="token" value="{{$token}}">
             <br>
             <br>
             <div class="btn-container">
