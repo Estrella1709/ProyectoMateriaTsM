@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PoliticasController extends Controller
 {
@@ -11,7 +13,12 @@ class PoliticasController extends Controller
      */
     public function index()
     {
-        //
+        // Obtiene todos los registros de la tabla 'politicas'
+        $politicas = DB::table('politicas')->get();
+
+        // Pasa los datos a la vista
+        return view('politicas', ['politicas' => $politicas]);
+
     }
 
     /**
@@ -27,7 +34,9 @@ class PoliticasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $politica = new politica();
+
+        $politica->descripcion=$request->input('descripoli');
     }
 
     /**
