@@ -20,11 +20,12 @@
             <p>Precio por noche: <x-input-text placeholder="1000" nombre="precio_n" /></p>
             <p>Ubicación:
                 <select name="ubicacion">
-                    <option>Seleccione una ciudad</option>
+                    <option value="" >Seleccione una ciudad</option>
                     @foreach ($ciudades as $ciudad)
                     <option value="{{$ciudad->id_ubicacion}}">{{$ciudad->nombre}}</option>
                     @endforeach
                 </select>
+                <small>{{$errors->first('ubicacion')}}</small>
             </p>
             <p>Distancia al centro en KM: <x-input-text placeholder="Distancia al centro" nombre="dist_centro" /></p>
             <p>WIFI:
@@ -34,6 +35,7 @@
                 <label>
                     <input type="radio" name="wifi" value="0" /> No
                 </label>
+                <small>{{$errors->first('wifi')}}</small>
             </p>
             <p>Desayuno:
                 <label>
@@ -42,6 +44,7 @@
                 <label>
                     <input type="radio" name="desayuno" value="0" /> No
                 </label>
+                <small>{{$errors->first('desayuno')}}</small>
             </p>
             <p>Piscina:
                 <label>
@@ -50,6 +53,7 @@
                 <label>
                     <input type="radio" name="piscina" value="0" /> No
                 </label>
+                <small>{{$errors->first('piscina')}}</small>
             </p>
 
         </div>
