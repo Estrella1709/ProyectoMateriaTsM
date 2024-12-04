@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('telefono', 15);
             $table->string('password', 255);
+            $table->string('remember_token', 100)->nullable();
             $table->dateTime('email_verified_at')->nullable();
             $table->boolean('two_factor_authentication')->nullable();
             $table->timestamps();

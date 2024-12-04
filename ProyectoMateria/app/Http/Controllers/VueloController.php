@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Vuelo;
 use App\Models\Aerolinea;
 use App\Models\Ubicacion;
+use App\Http\Requests\VueloRequest;
 
 class VueloController extends Controller
 {
+    public function adminIndex()
+    {
+        $vuelos = Vuelo::with(['aerolinea', 'origen', 'destino'])->get();
+        return view('CRUDvuelos', compact('vuelos'));
+    }
+
     public function index(Request $request)
     {
+    
         // Filtros
         $query = Vuelo::query();
 
@@ -33,6 +41,15 @@ class VueloController extends Controller
         if ($request->filled('escalas')) {
             $query->where('escalas', $request->escalas);
         }
+        
+        if ($request->filled('hora_salida')) {
+            $query->where('horario_salida', $request->salida);
+        }
+
+        if ($request->filled('hora_llegada')) {
+            $query->where('horario_llegada', $request->llegada);
+        }
+
 
         // Datos necesarios para los filtros
         $vuelos = $query->with(['aerolinea', 'origen', 'destino'])->get();
@@ -72,7 +89,7 @@ class VueloController extends Controller
             'disponibilidad_asientos' => 'required|integer',
         ]);
 
-        Vuelo::create($request->all());
+        Vuelo::create($request->validated());
 
         return redirect()->route('vuelos.index')->with('success', 'Vuelo creado exitosamente.');
     }
@@ -80,9 +97,11 @@ class VueloController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(vuelo $vuelo)
+    public function show(Request $request)
     {
-        //
+        $vuelos = Vuelo::with(['aerolinea', 'origen', 'destino'])->get();
+    return view('CRUDvuelos', compact('vuelos'));
+
     }
 
     /**
@@ -98,7 +117,7 @@ class VueloController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vuelo $vuelo)
+    public function update(VueloRequest $request, Vuelo $vuelo)
     {
         $request->validate([
             'id_origen' => 'required',
@@ -115,7 +134,7 @@ class VueloController extends Controller
             'disponibilidad_asientos' => 'required|integer',
         ]);
 
-        $vuelo->update($request->all());
+        $vuelo->update($request->validated());
 
         return redirect()->route('vuelos.index')->with('success', 'Vuelo actualizado exitosamente.');
     }

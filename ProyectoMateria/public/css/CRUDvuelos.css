@@ -1,67 +1,316 @@
-
-
-
-
-.table-container {
-    width: 80%;
-    max-width: 800px;
+/* General Styles */
+.crud-container {
+    padding: 2rem;
     background: #fff;
-    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 95%;
 }
 
-h2 {
-    margin-bottom: 15px;
+/* Table Styles */
+.table-responsive {
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-table {
+.custom-table {
     width: 100%;
-    border-collapse: collapse;
+    background: white;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+.custom-table th {
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
-th, td {
-    padding: 12px;
-    text-align: center;
+.custom-table td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
 }
 
-th {
-    background-color: #f0a500;
-    color: white;
+.custom-table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* Badge Styles */
+.badge {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 20px;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
+.bg-success {
+    background-color: #28a745 !important;
 }
 
-.edit-btn, .delete-btn {
-    padding: 5px 10px;
-    font-size: 0.9em;
-    border: none;
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+/* Button Styles */
+.btn {
+    padding: 8px 16px;
     border-radius: 5px;
-    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.edit-btn {
-    background-color: #4CAF50; /* Color verde para el botón de Editar */
-    color: white;
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+.btn i {
     margin-right: 5px;
 }
 
-.delete-btn {
-    background-color: #f44336; /* Color rojo para el botón de Borrar */
-    color: white;
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #dce4ec;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.header-section h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .crud-container {
+        padding: 1rem;
+        margin: 10px;
+    }
+
+    .header-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-container {
+        padding: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .custom-table {
+        font-size: 0.9rem;
+    }
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+
+.header-section .btn-primary {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.header-section .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.custom-table th {
+    background: #f8f9fa;
+    padding: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.custom-table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.9rem;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.action-buttons .btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.action-buttons .btn i {
+    font-size: 0.9rem;
+}
+
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .crud-container {
+        padding: 1rem;
+        margin: 10px;
+    }
+
+    .header-section {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 0.75rem;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.invalid-feedback {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
 }
