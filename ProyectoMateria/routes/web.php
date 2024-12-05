@@ -24,7 +24,7 @@ Route::get('/detallesvuelo', [controladorVistas::class, 'detallesvuelo'])->name(
 Route::get('/reservavuelo', [controladorVistas::class, 'reservavuelo'])->name('rutaReservavuelo');
 Route::get('/CRUDusuarios', [controladorVistas::class, 'CRUDusuarios'])->name('rutaCRUDusuarios');
 Route::get('/CRUDhoteles', [HotelController::class, 'CRUDhoteles'])->name('rutaCRUDhoteles');
-Route::get('/CRUDreportes', [controladorVistas::class, 'CRUDreportes'])->name('rutaCRUDreportes');
+Route::get('/CRUDreportes', [ReportesController::class, 'index'])->name('reportes.index');
 Route::get('/detallesreportes', [controladorVistas::class, 'detallesreportes'])->name('rutaDetallesReportes');
 Route::get('/agregarReporte', [ReportesController::class, 'create'])->name('reportes.create');
 Route::get('/notificaciones', [controladorVistas::class, 'notificaciones'])->name('rutaNotificaciones');
@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function(){
 
 //Resource type routes
 Route::resource('vuelos', VueloController::class);
+Route::resource('reportes', ReportesController::class);
 
 
 //Rutas para la validacion del registro
