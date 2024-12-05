@@ -29,7 +29,7 @@
                         <td>{{ $reporte->titulo_reporte }}</td>
                         <td>
                             <span class="badge {{ $reporte->tipo_reporte == 'vuelos' ? 'bg-primary' : 
-                                               ($reporte->tipo_reporte == 'hoteles' ? 'bg-success' : 'bg-info') }}">
+                                    ($reporte->tipo_reporte == 'hoteles' ? 'bg-success' : 'bg-info') }}">
                                 {{ ucfirst($reporte->tipo_reporte) }}
                             </span>
                         </td>
@@ -39,23 +39,19 @@
                             </span>
                         </td>
                         <td>
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-info" 
-                                        onclick="window.location.href='{{ route('reportes.show', $reporte->id_reporte) }}'">
-                                    Detalles
-                                </button>
                                 <button class="btn btn-sm btn-primary" 
                                         onclick="window.location.href='{{ route('reportes.edit', $reporte->id_reporte) }}'">
-                                    Editar
+                                    <i class="fas fa-edit"></i> Editar
                                 </button>
-                                <form action="{{ route('reportes.destroy', $reporte->id_reporte) }}" 
+                                <form id="delete-form-{{ $reporte->id_reporte }}" 
+                                      action="{{ route('reportes.destroy', $reporte->id_reporte) }}" 
                                       method="POST" 
                                       style="display: inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" 
+                                    <button type="button" 
                                             class="btn btn-sm btn-danger" 
-                                            onclick="return confirm('¿Está seguro de eliminar este reporte?')">
+                                            onclick="confirmarEliminacion('delete-form-{{ $reporte->id_reporte }}')">
                                         Eliminar
                                     </button>
                                 </form>
@@ -100,4 +96,33 @@
         </div>
     </div>
 </div>
+
+<script>
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: '{{ session('success') }}',
+            timer: 3000
+        });
+    @endif
+
+    function confirmarEliminacion(formId) {
+        Swal.fire({
+            title: '¿Está seguro?',
+            text: "Esta acción no se puede revertir",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(formId).submit();
+            }
+        });
+    }
+</script>
+
 @endsection

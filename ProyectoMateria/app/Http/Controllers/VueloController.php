@@ -114,6 +114,6 @@ class VueloController extends Controller
     {
         $vuelo->delete();
 
-        return redirect()->route('vuelos.index')->with('success', 'Vuelo eliminado exitosamente.');
+        return redirect()->route('vuelos.admin')->with('success', 'Vuelo eliminado exitosamente.');
     }
 }
