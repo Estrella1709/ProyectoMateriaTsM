@@ -35,6 +35,7 @@
                         <th>Aerolínea</th>
                         <th>Origen</th>
                         <th>Destino</th>
+                        <th>Escalas</th>
                         <th>Fecha Salida</th>
                         <th>Fecha Regreso</th>
                         <th>Horario Salida</th>
@@ -52,6 +53,7 @@
                         <td>{{ $vuelo->aerolinea->nombre }}</td>
                         <td>{{ $vuelo->origen->nombre }}</td>
                         <td>{{ $vuelo->destino->nombre }}</td>
+                        <td>{{ $vuelo->escalas }}</td>
                         <td>{{ \Carbon\Carbon::parse($vuelo->fecha_salida)->format('d/m/Y') }}</td>
                         <td>{{ $vuelo->fecha_regreso ? \Carbon\Carbon::parse($vuelo->fecha_regreso)->format('d/m/Y') : '-' }}</td>
                         <td>{{ \Carbon\Carbon::parse($vuelo->horario_salida)->format('H:i') }}</td>
