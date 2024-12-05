@@ -94,20 +94,20 @@
                             <option>MasterCard</option>
                             <option>Amex</option>
                         </select>
-                            <input type="text" placeholder="Número de tarjeta" name="tarjeta">
+                            <input type="text" placeholder="Número de tarjeta" name="tarjeta" value="{{old('tarjeta')}}">
                             @error('tarjeta')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
                             <div class="form-row">
-                            <input type="text" placeholder="Mes(MM)" name="mes_exp">
+                            <input type="text" placeholder="Mes(MM)" name="mes_exp" value="{{old('mes_exp')}}">
                             @error('mes_exp')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
-                            <input type="text" placeholder="Año(YY)" name="year_exp">
+                            <input type="text" placeholder="Año(YY)" name="year_exp" value="{{old('year_exp')}}">
                             @error('year_exp')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
-                            <input type="text" placeholder="CVV" name="cvv">
+                            <input type="text" placeholder="CVV" name="cvv" value="{{old('cvv')}}">
                             @error('cvv')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror

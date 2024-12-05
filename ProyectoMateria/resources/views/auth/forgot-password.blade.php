@@ -43,7 +43,6 @@
             @csrf
             <h3>Recuperacion de Cuenta</h3>
             <x-input-text placeholder="Escribe tu correo" nombre="email" />
-            <a href="">Reenviar código</a>
             <br>
             <br>
             <div class="btn-container">

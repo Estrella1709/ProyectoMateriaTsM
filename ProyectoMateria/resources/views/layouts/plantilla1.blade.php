@@ -22,6 +22,7 @@
                 <a href="{{ url('prereserva') }}" class="text-white mx-3">Pre Reservas</a>
                 @auth
                 <form action="{{ route('logout') }}" method="post">
+                    @csrf
                 <button type="submit" class="btn-logout">Cerrar sesión {{ auth()->user()->nombre }}</button>
                 </form>
                 @endauth
