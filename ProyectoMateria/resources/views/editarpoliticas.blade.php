@@ -18,7 +18,7 @@
         <h3>Políticas de cancelación</h3>
         
         <!-- Textarea donde se editará la descripción de la política -->
-        <x-textarea nombre="txtpoliticas" placeholder="Escribe aquí la nueva política">{{ old('txtpoliticas', $politica->descripcion) }}</x-textarea>
+        <textarea nombre="txtpoliticas" placeholder="Escribe aquí la nueva política">{{ old('txtpoliticas', $politica->descripcion) }}</textarea>
 
         <!-- Mostrar cualquier error de validación -->
         <small>{{ $errors->first('txtpoliticas') }}</small>
