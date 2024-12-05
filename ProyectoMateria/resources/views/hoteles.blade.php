@@ -100,7 +100,7 @@
                     @foreach ($hoteles as $hotel)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card">
-                                <img src="{{ asset('img/hotel_placeholder.jpeg') }}" class="card-img-top img-fluid" alt="Imagen de hotel" style="height: 200px; object-fit: cover;">
+                                <img src="{{ asset('img/hotel1.jpeg') }}" class="card-img-top img-fluid" alt="Imagen de hotel" style="height: 200px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title text-dark">{{ $hotel->nombre_hotel }}</h5>
                                     <p class="card-text text-dark">Categoría: {{ str_repeat('★', $hotel->estrellas) }}</p>

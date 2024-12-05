@@ -20,20 +20,11 @@
                 <a href="{{ url('vuelos') }}" class="text-white mx-3">Vuelos</a>
                 <a href="{{ url('reservas') }}" class="text-white mx-3">Reservas</a>
                 <a href="{{ url('prereserva') }}" class="text-white mx-3">Pre Reservas</a>
-
                 @auth
-                    <div class="relative inline-block">
-                        <button type="button" class="text-black">
-                            {{ auth()->user()->nombre }}
-                        </button>
-
-                        <div class="bg-black shadow-lg absolute top-10 right-0 rounded-lg overflow-hidden font-light">
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <button class="block w-full text-left hover:bg-slate-100 pl-4 pr-8 py-2">Logout</button>
-                            </form>
-                        </div>
-                    </div>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                <button type="submit" class="btn-logout">Cerrar sesión {{ auth()->user()->nombre }}</button>
+                </form>
                 @endauth
             </nav>
         </div>

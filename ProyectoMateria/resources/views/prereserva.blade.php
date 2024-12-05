@@ -94,20 +94,20 @@
                             <option>MasterCard</option>
                             <option>Amex</option>
                         </select>
-                            <input type="text" placeholder="Número de tarjeta" name="tarjeta">
+                            <input type="text" placeholder="Número de tarjeta" name="tarjeta" value="{{old('tarjeta')}}">
                             @error('tarjeta')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
                             <div class="form-row">
-                            <input type="text" placeholder="Mes(MM)" name="mes_exp">
+                            <input type="text" placeholder="Mes(MM)" name="mes_exp" value="{{old('mes_exp')}}">
                             @error('mes_exp')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
-                            <input type="text" placeholder="Año(YY)" name="year_exp">
+                            <input type="text" placeholder="Año(YY)" name="year_exp" value="{{old('year_exp')}}">
                             @error('year_exp')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
-                            <input type="text" placeholder="CVV" name="cvv">
+                            <input type="text" placeholder="CVV" name="cvv" value="{{old('cvv')}}">
                             @error('cvv')
                             <div style="color: red;">{{ $message }}</div>
                             @enderror
@@ -118,7 +118,9 @@
                         <button type="submit" class="pay-button">Pagar</button>
                     </form>
                     <p class="cancel-policy">Políticas de cancelación</p>
-                    <p class="policy-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    @foreach($politicas as $politica)
+                    <p class="policy-description">{{ $politica->descripcion }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
